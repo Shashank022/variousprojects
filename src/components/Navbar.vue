@@ -70,8 +70,8 @@ export default {
         { icon: "burst_mode", text: "DashBoard DT", route: "/dashboarddt" },
         { icon: "assistant", text: "Data Post", route: "/datapost" },
         { icon: "album", text: "Auto Complete", route: "/autocomplete" },
-        { icon: "fingerprint", text: "New Auto Complete", route: "/newautocomplete" }
-        //
+        { icon: "fingerprint", text: "New Auto Complete", route: "/newautocomplete" },
+        { icon: "restore", text: "Shipping Cart", route: "/shippingcart" }
       ]
     };
   }
