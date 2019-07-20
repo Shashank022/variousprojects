@@ -11,7 +11,7 @@
     "axios": "^0.18.1",
     "dns": "^0.2.2",
     "pagination": "^0.4.6",
-    "sequelize-cli": "^5.4.0",
+    "sequelize-cli": "^5.5.0",
     "vue": "^2.6.10",
     "vue-bootstrap-typeahead": "^0.2.6",
     "vue-resource": "^1.5.1",
