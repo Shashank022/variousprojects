@@ -10,6 +10,7 @@ import DashboardDT from "./views/DashboardDT.vue";
 import DataPost from "./views/Datapost.vue";
 import AutoComplete from "./views/AutoComplete.vue";
 import NewAutoComplete from "./views/NewAutoComplete.vue";
+import Shippingcart from "./views/Shippingcart.vue";
 
 Vue.use(Router);
 
@@ -67,5 +68,11 @@ export default new Router({
       name: "NewAutoComplete",
       component: NewAutoComplete
     },
+    {
+      path: "/shippingcart",
+      name: "Shippingcart",
+      component: Shippingcart 
+    },
+
   ]
 });
