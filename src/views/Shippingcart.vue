@@ -1,4 +1,6 @@
 <template>
+<v-container>
+<div>
   <v-hover>
     <v-card
       slot-scope="{ hover }"
@@ -33,17 +35,19 @@
           right
           top
         >
-          <v-icon>mdi-cart</v-icon>
+          <v-icon>navigation</v-icon>
         </v-btn>
-        <div class="font-weight-light grey--text title mb-2">For the perfect meal</div>
-        <h3 class="display-1 font-weight-light orange--text mb-2">QW cooking utensils</h3>
-        <div class="font-weight-light title mb-2">
+        <div class="title font-weight-light grey--text title mb-2">For the perfect meal</div>
+        <h5 class="subheading    font-weight-light orange--text mb-2">Cooking utensils</h5>
+        <div class="body-2 font-weight-light title mb-2">
           Our Vintage kitchen utensils delight any chef.<br>
           Made of bamboo by hand
         </div>
       </v-card-text>
     </v-card>
   </v-hover>
+  </div>
+  </v-container>
 </template>
 <script>
 export default {
