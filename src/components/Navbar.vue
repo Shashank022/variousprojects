@@ -71,7 +71,9 @@ export default {
         { icon: "assistant", text: "Data Post", route: "/datapost" },
         { icon: "album", text: "Auto Complete", route: "/autocomplete" },
         { icon: "fingerprint", text: "New Auto Complete", route: "/newautocomplete" },
-        { icon: "restore", text: "Shipping Cart", route: "/shippingcart" }
+        { icon: "restore", text: "Shipping Cart", route: "/shippingcart" },
+        { icon: "update", text: "Add User", route: "/newuserform" }
+
       ]
     };
   }

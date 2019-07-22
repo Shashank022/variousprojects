@@ -11,6 +11,7 @@ import DataPost from "./views/Datapost.vue";
 import AutoComplete from "./views/AutoComplete.vue";
 import NewAutoComplete from "./views/NewAutoComplete.vue";
 import Shippingcart from "./views/Shippingcart.vue";
+import Newform from "./views/Newform.vue";
 
 Vue.use(Router);
 
@@ -73,6 +74,11 @@ export default new Router({
       name: "Shippingcart",
       component: Shippingcart 
     },
-
+    {
+      path: "/newuserform",
+      name: "Newform",
+      component: Newform 
+    },
+//
   ]
 });
