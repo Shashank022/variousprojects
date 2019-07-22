@@ -468,6 +468,32 @@ export default {
             class: "III year",
             school: "Vardhaman Engg College"
           }
+        },
+        {
+          title: " Unix/COBOL/Windows/SOLARIS/Host Servers",
+          person: "Rangarajan",
+          due: "Jul 16 2022",
+          status: "Pending",
+          id: "446",
+          subjects: {
+            name: "Chemical",
+            rollNo: "98989898",
+            class: "IV year",
+            school: "Vardhman Engg College"
+          }
+        },
+        {
+          title: " Unix/COBOL/Windows/SOLARIS 4.561/Host Servers",
+          person: "Abdul Kalam",
+          due: "Jul 16 2029",
+          status: "Complete",
+          id: "447",
+          subjects: {
+            name: "Astro Physics",
+            rollNo: "26356752",
+            class: "IV year",
+            school: "Vikram Sarabhai Space Centre"
+          }
         }
       ],
 
