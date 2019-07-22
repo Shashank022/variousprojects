@@ -481,6 +481,19 @@ export default {
             class: "IV year",
             school: "Vardhman Engg College"
           }
+        },
+        {
+          title: " Unix/COBOL/Windows/SOLARIS 4.561/Host Servers",
+          person: "Abdul Kalam",
+          due: "Jul 16 2029",
+          status: "Complete",
+          id: "447",
+          subjects: {
+            name: "Astro Physics",
+            rollNo: "26356752",
+            class: "IV year",
+            school: "Vikram Sarabhai Space Centre"
+          }
         }
       ],
 
