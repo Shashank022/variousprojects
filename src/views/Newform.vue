@@ -1,28 +1,31 @@
 <template>
   <v-container>
-    <v-layout>
-              <form>
-                <div class="well">
-                  <h4> Add User</h4>
-                  <div class="form-group">
-                    <label class="pull-left"> First Name </label>
-                    <input type="text" class="form-control" placeholder="First Name" v-model="User.first_name">
-                  </div>
-                  <div class="form-group">
-                    <label class="pull-left"> Last Name </label>
-                    <input type="text" class="form-control" placeholder="Last Namen" v-model="User.last_name">
-                  </div>
-                  <div class="form-group">
-                    <label class="pull-left"> Email </label>
-                    <input type="text" class="form-control" placeholder="Email " v-model="User.email">
-                  </div>
-                </div>
-                <div>
-                  <v-btn round color="primary" dark class="centered" @click="addToAPI">Submit</v-btn>
-                    <v-btn round color="primary" dark class="centered">Clear</v-btn>
-                </div>
-              </form>
-    </v-layout>
+      <v-layout>
+        <h4>Details of the System</h4>
+      </v-layout>
+        <v-divider></v-divider>
+          <v-spacer></v-spacer>
+                <v-layout>
+                      <div>
+                      </div>
+                            <div>
+                                <v-flex>
+                                  <v-text-field label="First Name" v-model="firstname"></v-text-field>
+                                </v-flex>
+                                <v-flex>
+                                  <v-text-field label="Last Name" v-model="lastname"></v-text-field>
+                                </v-flex>
+                                <v-flex>
+                                  <v-text-field label="Email" v-model="email"></v-text-field>
+                                </v-flex>
+                            </div>
+                </v-layout>
+          <v-layout>
+              <div>
+                <v-btn round small color="primary" dark class="centered" @click="addToAPI()">Submit</v-btn>
+                  <v-btn round small color="primary" dark class="centered" @click="clearFields()">Clear</v-btn>
+              </div>
+          </v-layout>
     </v-container>
 </template>
 
@@ -33,33 +36,47 @@ export default {
   name: 'hello',
   data() {
     return {
+      firstname:"",
+      lastname:"",
+      email:"",
       msg: 'Welcome to Your Vue.js App',
       User: { first_name: '', last_name: '', email: '' },
     }
   }, methods: {
     addToAPI() {
-      let newUser = {
-        first_name: this.User.first_name,
-        last_name: this.User.last_name,
-        email: this.User.email
-      }
-      console.log(newUser);
-      axios.post('http://localhost:3000/users', newUser)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      console.log(this.firstname);
+      console.log(this.lastname);
+      console.log(this.email);
+      // let newUser = {
+      //   first_name: this.User.first_name,
+      //   last_name: this.User.last_name,
+      //   email: this.User.email
+      // }
+      // console.log(newUser);
+      // axios.post('http://localhost:3000/users', newUser)
+      //   .then((response) => {
+      //     console.log(response);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+    },
+
+    clearFields(){
+      this.firstname="";
+      this.lastname="";
+      this.email="";
+
     }
-  }
+  },
+  
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
+h1,h2 {
   font-weight: normal;
 }
 ul {
