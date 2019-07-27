@@ -570,8 +570,6 @@ export default {
       printMyPage(){
       console.log(document.getElementsByClassName('header-footer'));
       document.getElementsByClassName('header-footer').checked = false;
-      //document.getElementsByClassName('background-graphics').checked = false;
-
       window.print();
     }
   },

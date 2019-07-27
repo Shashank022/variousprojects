@@ -14,6 +14,7 @@
                   <div class="subheading">{{person.name}}</div>
                     <div class="subheading">{{person.role}}</div>
                 </v-card-text>
+                <v-btn flat color="green" @click="getallDetails(person)">Submit</v-btn>
                     <!-- <v-card-action>
                           <v-btn flat color="grey">
                               <v-icon small left>message</v-icon>
@@ -21,6 +22,12 @@
                           </v-btn>
                     </v-card-action> -->
                 </v-card>
+                <span>
+                    <v-expansion-panel>
+                      <v-expansion-panel-content>{{person.name}}</v-expansion-panel-content>
+                      <v-expansion-panel-content>{{person.role}}</v-expansion-panel-content>
+                    </v-expansion-panel>
+                </span>
               </v-flex>
             </v-layout>
     </v-container>
@@ -29,11 +36,10 @@
 
 <script>
 export default {
-
   data(){
-
     return{
-        team:[
+       divDisabled:false, 
+    team:[
           {name:'Suresh', role:'Web Developer',avatar:'/avatar-2.png'},
           {name:'Srinivas', role:'Graphic Developer',avatar:'/avatar-1.png'},
           {name:'Kiran', role:'Client Side Developer',avatar:'/avatar-2.png'},
@@ -45,6 +51,14 @@ export default {
           {name:'Raja Kulkarna', role:'Full Stack Developer',avatar:'/avatar-3.png'},
           {name:'Rameshk', role:'Networking Developer',avatar:'/avatar-5.png'}
         ]
+    }
+  },
+
+  methods: {
+    "getallDetails":function(personObj){
+      /* eslint-disable no-console */
+        console.log("Welcome to the JS Programming...");
+        console.log(personObj);
     }
   }
   
