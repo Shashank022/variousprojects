@@ -30,13 +30,13 @@
             :headers="headers"
             :items="listofPosts"
             :items-per-page="5"
-            loading
-            loading-text="Loading... Please wait"
             class="elevation-1">
-          <td>props.item.id</td>
-          <td>props.item.title</td>
-          <td>props.item.body</td>
-          <td>props.item.userId</td>
+              <template v-slot:items="props">
+                  <td>{{props.item.id}}</td>
+                  <td>{{props.item.title}}</td>
+                  <td>{{props.item.body}}</td>
+                  <td>{{props.item.userId}}</td>
+              </template>
           </v-data-table>
 
     </v-container>
@@ -63,30 +63,41 @@ export default {
             value: 'name',
           },
           { text: 'Title', value: 'title' },
-          { text: 'UserID', value: 'id' },
           { text: 'Body', value: 'body' },
+          { text: 'UserID', value: 'id' },
+
         ],
     }
-  }, methods: {
-    addToAPI() {
-      let _this = this;
+  }, 
 
-      const endpoint ="https://jsonplaceholder.typicode.com/posts";
+ created(){
+     let _this = this;
+     const endpoint ="https://jsonplaceholder.typicode.com/posts";
       const jsonToSend = {};
-
       console.log(jsonToSend);
       console.log(endpoint);
-
       axios.get(endpoint).then(function(response) {
-          console.log(response.data);
           _this.listofPosts = response.data;
-          console.log(_this.listofPosts);
-      }); 
-      
+      });
+    
+  },
+  
+  methods: {
+    addToAPI() {
+      let _this = this;
+      const endpoint ="https://jsonplaceholder.typicode.com/comments";
+      //const jsonToSend = {};
       // jsonToSend.digest = window.sessionInformation.digest;
       // jsonToSend.firstName = this.firstname;
       // jsonToSend.lastName = this.lastname;
       // jsonToSend.email = this.email;
+      //console.log(jsonToSend);
+      //console.log(endpoint);
+      axios.get(endpoint).then(function(response) {
+          console.log(response.data);
+          //_this.listofPosts = response.data;
+          //console.log(_this.listofPosts);
+      });
       // let newUser = {
       //   first_name: this.User.first_name,
       //   last_name: this.User.last_name,
@@ -110,6 +121,7 @@ export default {
 
     }
   },
+
 }
 </script>
 
