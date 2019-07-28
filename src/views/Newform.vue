@@ -73,10 +73,6 @@ export default {
 
       const endpoint ="https://jsonplaceholder.typicode.com/posts";
       const jsonToSend = {};
-      // jsonToSend.digest = window.sessionInformation.digest;
-      // jsonToSend.firstName = this.firstname;
-      // jsonToSend.lastName = this.lastname;
-      // jsonToSend.email = this.email;
 
       console.log(jsonToSend);
       console.log(endpoint);
@@ -85,7 +81,12 @@ export default {
           console.log(response.data);
           _this.listofPosts = response.data;
           console.log(_this.listofPosts);
-      });
+      }); 
+      
+      // jsonToSend.digest = window.sessionInformation.digest;
+      // jsonToSend.firstName = this.firstname;
+      // jsonToSend.lastName = this.lastname;
+      // jsonToSend.email = this.email;
       // let newUser = {
       //   first_name: this.User.first_name,
       //   last_name: this.User.last_name,
@@ -105,6 +106,7 @@ export default {
       this.firstname="";
       this.lastname="";
       this.email="";
+      this.listofPosts=[];
 
     }
   },
