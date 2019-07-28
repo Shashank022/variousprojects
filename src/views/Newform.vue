@@ -62,9 +62,9 @@ export default {
             sortable: true,
             value: 'name',
           },
-          { text: 'Title', value: 'title' },
-          { text: 'Body', value: 'body' },
-          { text: 'UserID', value: 'id' },
+          { text: 'Server Title', value: 'title' },
+          { text: 'Server Information ', value: 'body' },
+          { text: 'Server Group ID', value: 'id' },
 
         ],
     }
