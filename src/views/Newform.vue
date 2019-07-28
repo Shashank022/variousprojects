@@ -86,31 +86,9 @@ export default {
     addToAPI() {
       let _this = this;
       const endpoint ="https://jsonplaceholder.typicode.com/comments";
-      //const jsonToSend = {};
-      // jsonToSend.digest = window.sessionInformation.digest;
-      // jsonToSend.firstName = this.firstname;
-      // jsonToSend.lastName = this.lastname;
-      // jsonToSend.email = this.email;
-      //console.log(jsonToSend);
-      //console.log(endpoint);
       axios.get(endpoint).then(function(response) {
           console.log(response.data);
-          //_this.listofPosts = response.data;
-          //console.log(_this.listofPosts);
       });
-      // let newUser = {
-      //   first_name: this.User.first_name,
-      //   last_name: this.User.last_name,
-      //   email: this.User.email
-      // }
-      // console.log(newUser);
-      // axios.post('http://localhost:3000/users', newUser)
-      //   .then((response) => {
-      //     console.log(response);
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
     },
 
     clearFields(){
