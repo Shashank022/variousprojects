@@ -70,13 +70,12 @@ export default {
     }
   }, 
 
-  created(){
+ created(){
      let _this = this;
      const endpoint ="https://jsonplaceholder.typicode.com/posts";
       const jsonToSend = {};
       console.log(jsonToSend);
       console.log(endpoint);
-
       axios.get(endpoint).then(function(response) {
           _this.listofPosts = response.data;
       });
@@ -86,17 +85,14 @@ export default {
   methods: {
     addToAPI() {
       let _this = this;
-
       const endpoint ="https://jsonplaceholder.typicode.com/comments";
       //const jsonToSend = {};
       // jsonToSend.digest = window.sessionInformation.digest;
       // jsonToSend.firstName = this.firstname;
       // jsonToSend.lastName = this.lastname;
       // jsonToSend.email = this.email;
-
       //console.log(jsonToSend);
       //console.log(endpoint);
-
       axios.get(endpoint).then(function(response) {
           console.log(response.data);
           //_this.listofPosts = response.data;
@@ -121,6 +117,7 @@ export default {
       this.firstname="";
       this.lastname="";
       this.email="";
+      this.listofPosts=[];
 
     }
   },
