@@ -30,7 +30,6 @@
             :headers="headers"
             :items="listofPosts"
             :items-per-page="5"
-            loading-text="Loading... Please wait"
             class="elevation-1">
               <template v-slot:items="props">
                   <td>{{props.item.id}}</td>
@@ -71,7 +70,6 @@ export default {
     }
   }, 
 
-
   created(){
      let _this = this;
      const endpoint ="https://jsonplaceholder.typicode.com/posts";
@@ -80,9 +78,7 @@ export default {
       console.log(endpoint);
 
       axios.get(endpoint).then(function(response) {
-          console.log(response.data);
           _this.listofPosts = response.data;
-          console.log(_this.listofPosts);
       });
     
   },
@@ -91,20 +87,20 @@ export default {
     addToAPI() {
       let _this = this;
 
-      const endpoint ="https://jsonplaceholder.typicode.com/posts";
-      const jsonToSend = {};
+      const endpoint ="https://jsonplaceholder.typicode.com/comments";
+      //const jsonToSend = {};
       // jsonToSend.digest = window.sessionInformation.digest;
       // jsonToSend.firstName = this.firstname;
       // jsonToSend.lastName = this.lastname;
       // jsonToSend.email = this.email;
 
-      console.log(jsonToSend);
-      console.log(endpoint);
+      //console.log(jsonToSend);
+      //console.log(endpoint);
 
       axios.get(endpoint).then(function(response) {
           console.log(response.data);
-          _this.listofPosts = response.data;
-          console.log(_this.listofPosts);
+          //_this.listofPosts = response.data;
+          //console.log(_this.listofPosts);
       });
       // let newUser = {
       //   first_name: this.User.first_name,
