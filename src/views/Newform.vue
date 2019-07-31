@@ -38,7 +38,6 @@
                   <td>{{props.item.userId}}</td>
               </template>
           </v-data-table>
-
     </v-container>
 </template>
 
