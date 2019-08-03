@@ -19,10 +19,14 @@
                     </v-card-text>
                 </v-card>
                 <v-card>
-                    <v-card-text>
-                        Selected  Name: {{model}}
+                    <v-card-text class="text-xs-left">
+                      <span>Selected  Name: {{model}}</span>
+                    <span class="right">
+                        <v-btn small round color="primary" class="black--text" @click="getSelectSubmitted()"> Submit</v-btn>
+                        <v-btn small round color="primary" class="black--text" @click="clearSelected()"> Clear</v-btn>
+                    </span>
                     </v-card-text>
-                    <v-btn small round color="primary" class="black--text" @click="getFormSubmitted()"> Submit</v-btn>
+                    
                 </v-card>
         </v-container>
 </template>
@@ -61,10 +65,17 @@
     },
 
     methods:{
-      getFormSubmitted(){
+      getSelectSubmitted(){
       /* eslint-disable no-console */
         console.log("***********");
         console.log(this.model);
+    }, 
+
+    clearSelected(){
+        console.log("***9090909******");
+        console.log(this.model);
+        this.selected="";
+        this.model="";
     }
     }
   }
