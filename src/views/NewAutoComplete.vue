@@ -14,9 +14,15 @@
                         item-value="API"
                         label="Please enter the Name"
                         placeholder="Start typing to Search"
-                          return-object
+                        return-object
                       ></v-autocomplete>
                     </v-card-text>
+                </v-card>
+                <v-card>
+                    <v-card-text>
+                        Selected  Name: {{model}}
+                    </v-card-text>
+                    <v-btn small round color="primary" class="black--text" @click="getFormSubmitted()"> Submit</v-btn>
                 </v-card>
         </v-container>
 </template>
@@ -53,6 +59,14 @@
         results:[]
       };
     },
+
+    methods:{
+      getFormSubmitted(){
+      /* eslint-disable no-console */
+        console.log("***********");
+        console.log(this.model);
+    }
+    }
   }
   
 </script>
