@@ -72,7 +72,9 @@ export default {
         { icon: "album", text: "Auto Complete", route: "/autocomplete" },
         { icon: "fingerprint", text: "New Auto Complete", route: "/newautocomplete" },
         { icon: "restore", text: "Shipping Cart", route: "/shippingcart" },
-        { icon: "update", text: "Add User", route: "/newuserform" }
+        { icon: "update", text: "Add User", route: "/newuserform" },
+        { icon: "alarm_on", text: "Expansion Panel", route: "/expansionpanel" }
+
 
       ]
     };

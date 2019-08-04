@@ -12,6 +12,7 @@ import AutoComplete from "./views/AutoComplete.vue";
 import NewAutoComplete from "./views/NewAutoComplete.vue";
 import Shippingcart from "./views/Shippingcart.vue";
 import Newform from "./views/Newform.vue";
+import ExpansionPanel from "./views/ExpansionPanel.vue";
 
 Vue.use(Router);
 
@@ -78,6 +79,11 @@ export default new Router({
       path: "/newuserform",
       name: "Newform",
       component: Newform 
+    },
+    {
+      path: "/expansionpanel",
+      name: "ExpansionPanel",
+      component: ExpansionPanel 
     },
 //
   ]

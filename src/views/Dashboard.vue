@@ -42,7 +42,6 @@
                 <v-btn round outline flat small color="green" @click="update(project)">Accept</v-btn>
               </div>
               <v-icon dark right>check_circle</v-icon>
-              <Popup/>
             </v-flex>
           </v-layout>
           <v-divider></v-divider>
@@ -56,10 +55,9 @@
 </template>
 
 <script>
-import Popup from "./Popup";
 
 export default {
-  components: { Popup },
+  components: {},
   data() {
     return {
       search: "",
