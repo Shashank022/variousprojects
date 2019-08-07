@@ -1,7 +1,7 @@
 <template>
         <v-container>
                 <v-card>
-                  <v-card-title class="headline align-center green--text"> Auto Complete with Details Display</v-card-title>
+                  <v-card-title class="headline green--text"> Auto Complete with Details Display</v-card-title>
                     <v-card-text>
                       <v-autocomplete
                         v-model="model"
@@ -69,6 +69,39 @@
                     </v-layout>
                     <v-divider></v-divider>
                   </v-card>
+
+                  <v-card flat v-for="person in this.groupList" :key="person.name" :search="search">
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Person Name</div>
+                        <div>{{person.name}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Project Title</div>
+                        <div>{{person.meaning}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Person</div>
+                        <div>{{person.gender}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Due Date</div>
+                        <div>{{person.favourite}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Status</div>
+                        <div>
+                          <!-- <v-chip small :class="`${person.status} white--text caption`">{{person.status}}</v-chip> -->
+                        </div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Update</div>
+                        <!-- <div>
+                          <v-btn round outline flat small color="green" @click="update(person)">Accept</v-btn>
+                        </div> -->
+                        <v-icon dark right>check_circle</v-icon>
+                      </v-flex>
+                    <v-divider></v-divider>
+                  </v-card>
         </v-container>
 </template>
 
@@ -103,6 +136,7 @@
         arrowCounter: 0,
         results:[],
         projectsList:[],
+        groupList:[],
         personList:[]
       };
     },
@@ -112,6 +146,13 @@
        this.$http.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
           this.projectsList = response.data;
           console.log("%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%"); 
+          console.log(response.data); 
+        }); 
+
+      this.$http.get("https://vue-firebase-1103b.firebaseio.com/names.json").then(function(response) {
+          this.groupList = response.data;
+          console.log("%^%^%^%456465465465464%^%^%"); 
+          console.log( this.groupList); 
           console.log(response.data); 
         }); 
 
@@ -128,7 +169,22 @@
               return obj;
           }
           });
+          
+
+      JSON.stringify(this.groupList);
+      this.groupList = Object.values(this.groupList);
+      this.groupList = this.groupList[0];
+      if(this.groupList){
+        this.groupList = this.groupList.filter(obj => {
+          if(obj.name === this.model){
+              return obj;
+          }
+          });
+      }
+       
           console.log(this.personList);
+          console.log(this.groupList);
+
           // this.personList.push(result);
           // console.log(this.personList);
     }, 
