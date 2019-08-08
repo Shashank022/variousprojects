@@ -1,6 +1,7 @@
 <template>
         <v-container>
                 <v-card>
+                  <v-card-title class="headline green--text"> Auto Complete with Details Display</v-card-title>
                     <v-card-text>
                       <v-autocomplete
                         v-model="model"
@@ -29,47 +30,76 @@
                     <v-card-text>
 
 
-                      <span>Student Details
-                           Name: {{model}}
-                           College : {{model}}
-                           
-                           </span>
+                      <span>Student Details Name: {{model}}</span>
 
                     </v-card-text>
                 </v-card>
-                <v-card flat v-for="project in this.projectsList" :key="project.id" :search="search">
-                    <v-layout row wrap :class="`pa-1 project ${project.status}`">
+                <v-card flat v-for="person in this.personList" :key="person.id" :search="search">
+                    <v-layout row wrap :class="`pa-1 project ${person.status}`">
 
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Project ID</div>
-                        <div>{{project.id}}</div>
+                        <div>{{person.id}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Project Title</div>
-                        <div>{{project.title}}</div>
+                        <div>{{person.title}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Person</div>
-                        <div>{{project.person}}</div>
+                        <div>{{person.person}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Due Date</div>
-                        <div>{{project.due}}</div>
+                        <div>{{person.due}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Status</div>
                         <div>
-                          <v-chip small :class="`${project.status} white--text caption`">{{project.status}}</v-chip>
+                          <v-chip small :class="`${person.status} white--text caption`">{{person.status}}</v-chip>
                         </div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Update</div>
                         <div>
-                          <v-btn round outline flat small color="green" @click="update(project)">Accept</v-btn>
+                          <v-btn round outline flat small color="green" @click="update(person)">Accept</v-btn>
                         </div>
                         <v-icon dark right>check_circle</v-icon>
                       </v-flex>
                     </v-layout>
+                    <v-divider></v-divider>
+                  </v-card>
+
+                  <v-card flat v-for="person in this.groupList" :key="person.name" :search="search">
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Person Name</div>
+                        <div>{{person.name}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Project Title</div>
+                        <div>{{person.meaning}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Person</div>
+                        <div>{{person.gender}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Due Date</div>
+                        <div>{{person.favourite}}</div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Status</div>
+                        <div>
+                          <!-- <v-chip small :class="`${person.status} white--text caption`">{{person.status}}</v-chip> -->
+                        </div>
+                      </v-flex>
+                      <v-flex xs4 md2 sm1>
+                        <div class="caption grey--text">Update</div>
+                        <!-- <div>
+                          <v-btn round outline flat small color="green" @click="update(person)">Accept</v-btn>
+                        </div> -->
+                        <v-icon dark right>check_circle</v-icon>
+                      </v-flex>
                     <v-divider></v-divider>
                   </v-card>
         </v-container>
@@ -105,7 +135,9 @@
         isLoading: false,
         arrowCounter: 0,
         results:[],
-        projectsList:[]
+        projectsList:[],
+        groupList:[],
+        personList:[]
       };
     },
 
@@ -117,22 +149,51 @@
           console.log(response.data); 
         }); 
 
+      this.$http.get("https://vue-firebase-1103b.firebaseio.com/names.json").then(function(response) {
+          this.groupList = response.data;
+          console.log("%^%^%^%456465465465464%^%^%"); 
+          console.log( this.groupList); 
+          console.log(response.data); 
+        }); 
+
     },
 
     methods:{
       getSelectSubmitted(){
       /* eslint-disable no-console */
-        console.log(this.model);
-        console.log(this.projectsList);
-        for(var i =0; i<this.projectsList.length;i++){
-            console.log(this.projectsList[i]);
-        }
+      console.log(this.model);
+      JSON.stringify(this.projectsList);
+      this.projectsList = Object.values(this.projectsList);
+       this.personList = this.projectsList.filter(obj => {
+          if(obj.person === this.model){
+              return obj;
+          }
+          });
+          
+
+      JSON.stringify(this.groupList);
+      this.groupList = Object.values(this.groupList);
+      this.groupList = this.groupList[0];
+      if(this.groupList){
+        this.groupList = this.groupList.filter(obj => {
+          if(obj.name === this.model){
+              return obj;
+          }
+          });
+      }
+       
+          console.log(this.personList);
+          console.log(this.groupList);
+
+          // this.personList.push(result);
+          // console.log(this.personList);
     }, 
 
     clearSelected(){
         console.log(this.model);
         this.selected="";
         this.model="";
+        this.personList="";
     }
     }
   }
