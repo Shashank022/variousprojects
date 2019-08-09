@@ -148,19 +148,16 @@ import axios from "axios";
       const _this= this;
         axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
           _this.projectsList = response.data;
-          console.log("%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%"); 
           console.log(response.data); 
         }); 
 
         axios.get("https://vue-firebase-1103b.firebaseio.com/names.json").then(function(response) {
           _this.groupList = response.data;
-          console.log("%^%^%^%456465465465464%^%^%"); 
           console.log(_this.groupList); 
           console.log(response.data); 
         }); 
 
         axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
-          console.log("%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%"); 
           console.log(response.data); 
         }); 
     },
