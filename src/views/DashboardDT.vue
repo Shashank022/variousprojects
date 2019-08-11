@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import axios from "axios";
 
 export default {
   components: {},
@@ -524,8 +525,7 @@ export default {
   methods: {
 
     created() {
-      this.$http
-        .post("http://jsonplaceholder.typicode.com/posts")
+      axios.post("http://jsonplaceholder.typicode.com/posts")
         .then(function(data) {
           this.blogs = data.body.slice(0, 10);
           /* eslint-disable no-console */

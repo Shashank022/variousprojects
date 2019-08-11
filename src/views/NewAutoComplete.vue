@@ -106,6 +106,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
   export default {
     name: 'newautocomplete',
 
@@ -143,19 +145,21 @@
 
     created(){
       /* eslint-disable no-console */
-       this.$http.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
-          this.projectsList = response.data;
-          console.log("%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%"); 
+      const _this= this;
+        axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
+          _this.projectsList = response.data;
           console.log(response.data); 
         }); 
 
-      this.$http.get("https://vue-firebase-1103b.firebaseio.com/names.json").then(function(response) {
-          this.groupList = response.data;
-          console.log("%^%^%^%456465465465464%^%^%"); 
-          console.log( this.groupList); 
+        axios.get("https://vue-firebase-1103b.firebaseio.com/names.json").then(function(response) {
+          _this.groupList = response.data;
+          console.log(_this.groupList); 
           console.log(response.data); 
         }); 
 
+        axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
+          console.log(response.data); 
+        }); 
     },
 
     methods:{
@@ -169,7 +173,6 @@
               return obj;
           }
           });
-          
 
       JSON.stringify(this.groupList);
       this.groupList = Object.values(this.groupList);
@@ -185,8 +188,6 @@
           console.log(this.personList);
           console.log(this.groupList);
 
-          // this.personList.push(result);
-          // console.log(this.personList);
     }, 
 
     clearSelected(){
@@ -194,6 +195,7 @@
         this.selected="";
         this.model="";
         this.personList="";
+        this.groupList="";
     }
     }
   }
