@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="post in posts" :key="post.title">
+          <tr v-for="post in posts" :key=post.title>
             <td>{{post.title.rendered}}</td>
             <td>{{post.date_gmt}}</td>
           </tr>
@@ -30,7 +30,6 @@
     <div>
         Post Student information for the Save the Details
     </div>
- <v-form>
  <v-layout row wrap>
         <v-flex xs12 md4 sm2 >
           <v-menu>
@@ -83,7 +82,6 @@
         </v-flex>
     <v-btn round color="green" class="black--text" @click="getFormSubmitted()"> Submit</v-btn>
       </v-layout>
-      </v-form>
 
   </v-Container>
 </template>
@@ -116,7 +114,11 @@ export default {
         from: "",
         to: "",
         total: ""
-      }
+      },
+      dueby:"",
+      status:"",
+      person:"",
+      subjects:""
     };
   },
   methods: {
