@@ -155,7 +155,7 @@ export default {
           : "";
     },
     createPosts(){
-//url: https://myvueproject-d84e4.firebaseio.com/
+            //url: https://myvueproject-d84e4.firebaseio.com  /
     },
     getFormSubmitted(){
 

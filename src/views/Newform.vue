@@ -49,6 +49,7 @@ export default {
   data() {
     return {
       listofPosts:[],
+      dataList:[],
       firstname:"",
       lastname:"",
       email:"",
@@ -77,6 +78,7 @@ export default {
       console.log(endpoint);
       axios.get(endpoint).then(function(response) {
           _this.listofPosts = response.data;
+          
       });
     
   },
@@ -84,10 +86,21 @@ export default {
   methods: {
     addToAPI() {
       let _this = this;
-      const endpoint ="https://jsonplaceholder.typicode.com/comments";
-      axios.get(endpoint).then(function(response) {
-          console.log(response.data);
+      const endpoint ="https://vue-project-8ca78.firebaseio.com/formdata";
+      const jsonSend = {};
+      jsonSend.digest = window.digest;
+      jsonSend.firstname = this.firstname;
+      jsonSend.lastname = this.lastname;
+      jsonSend.email = this.email;
+
+      console.log(jsonSend);
+      console.log(endpoint);
+
+      axios.post(endpoint, jsonSend).then(function(response) {
+          _this.dataList = response.data;
+          console.log(_this.dataList);
       });
+
     },
 
     clearFields(){
@@ -95,7 +108,6 @@ export default {
       this.lastname="";
       this.email="";
       this.listofPosts=[];
-
     }
   },
 
