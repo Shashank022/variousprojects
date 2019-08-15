@@ -86,7 +86,7 @@ export default {
   methods: {
     addToAPI() {
       let _this = this;
-      const endpoint ="https://vue-project-8ca78.firebaseio.com/formdata";
+      const endpoint ="https://vue-project-8ca78.firebaseio.com/formdata.json";
       const jsonSend = {};
       jsonSend.digest = window.digest;
       jsonSend.firstname = this.firstname;
