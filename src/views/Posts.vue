@@ -77,7 +77,7 @@
       <v-flex xs12 md4 sm2>
           <v-text-field
             label="Title"
-            v-model="dueby"
+            v-model="title"
           ></v-text-field>
         </v-flex>
     <v-btn round color="green" class="black--text" @click="getFormSubmitted()"> Submit</v-btn>
