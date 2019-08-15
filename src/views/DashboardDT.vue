@@ -7,9 +7,12 @@
       </div>
       <span class="no-print">
         <div class="text-xs-right">
-          <span class="group pa-2">
-              <v-icon  v-on:click="printMyPage()">print</v-icon>
-          </span>
+          <v-tooltip bottom>
+             <template v-slot:activator="{ on }">
+                  <v-btn color="primary" dark v-on="on" @click="printMyPage()"><v-icon>print</v-icon></v-btn>
+            </template>
+          <span>Print</span>
+          </v-tooltip>
       </div>
       </span>
       <v-card>
