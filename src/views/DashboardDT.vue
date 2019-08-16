@@ -16,6 +16,7 @@
       </div>
       </span>
       <v-card>
+        
         <span class="no-print">
         <v-card-title id="serverpage" class="font-weight-bold">Server's Data
           <v-spacer></v-spacer>
