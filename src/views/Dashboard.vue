@@ -56,6 +56,8 @@
 
 <script>
 
+import axios from 'axios';
+
 export default {
   components: {},
   data() {
@@ -85,7 +87,7 @@ export default {
    created() {
      //var myMap = new Map();
       /* eslint-disable no-console */
-      this.$http.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
+      axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
           this.projectsList = response.data;
           console.log("%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%"); 
           console.log(response.data); 
@@ -100,8 +102,7 @@ export default {
     update(project) {
       /* eslint-disable no-console */
         //  let result = this.projects.map(({ id }) => id);
-         this.$http
-        .get("https://vue-project-8ca78.firebaseio.com/info.json")
+         axios.get("https://vue-project-8ca78.firebaseio.com/info.json")
         .then(function(response) {
           //this.blogs = data.body.slice(0, 10);
           /* eslint-disable no-console */
