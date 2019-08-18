@@ -76,39 +76,7 @@
                     </v-layout>
                     <v-divider></v-divider>
                   </v-card>
-
-                  <!-- <v-card flat v-for="person in this.groupList" :key="person.name" :search="search">
-                      <v-flex xs4 md2 sm1>
-                        <div class="caption grey--text">Person Name</div>
-                        <div>{{person.name}}</div>
-                      </v-flex>
-                      <v-flex xs4 md2 sm1>
-                        <div class="caption grey--text">Project Title</div>
-                        <div>{{person.meaning}}</div>
-                      </v-flex>
-                      <v-flex xs4 md2 sm1>
-                        <div class="caption grey--text">Person</div>
-                        <div>{{person.gender}}</div>
-                      </v-flex>
-                      <v-flex xs4 md2 sm1>
-                        <div class="caption grey--text">Due Date</div>
-                        <div>{{person.favourite}}</div>
-                      </v-flex>
-                      <v-flex xs4 md2 sm1>
-                        <div class="caption grey--text">Status</div>
-                        <div>
-                          <!-- <v-chip small :class="`${person.status} white--text caption`">{{person.status}}</v-chip> -->
-                        <!-- </div>
-                      </v-flex>
-                      <v-flex xs4 md2 sm1>
-                        <div class="caption grey--text">Update</div>
-                        <!-- <div>
-                          <v-btn round outline flat small color="green" @click="update(person)">Accept</v-btn>
-                        </div> -->
-                        <!-- <v-icon dark right>check_circle</v-icon>
-                      </v-flex>
-                    <v-divider></v-divider>
-                  </v-card> --> 
+                  
         </v-container>
 </template>
 
