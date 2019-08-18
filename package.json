@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.1",
+    "cors": "^2.8.5",
     "dns": "^0.2.2",
     "pagination": "^0.4.6",
     "sequelize-cli": "^5.5.0",
