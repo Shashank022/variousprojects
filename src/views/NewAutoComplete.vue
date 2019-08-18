@@ -1,5 +1,11 @@
 <template>
         <v-container>
+          <div>
+                <v-alert type="error" v-if="this.model">
+                          I'm an error alert.
+                    </v-alert>
+          </div>
+          <div>
                 <v-card>
                   <v-card-title class="headline green--text"> Auto Complete with Details Display</v-card-title>
                     <v-card-text>
@@ -19,6 +25,7 @@
                       ></v-autocomplete>
                     </v-card-text>
                 </v-card>
+                </div>
                 <v-card>
                     <v-card-text class="text-xs-left">
                       <span>Selected  Name: {{model}}</span>
@@ -70,7 +77,7 @@
                     <v-divider></v-divider>
                   </v-card>
 
-                  <v-card flat v-for="person in this.groupList" :key="person.name" :search="search">
+                  <!-- <v-card flat v-for="person in this.groupList" :key="person.name" :search="search">
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Person Name</div>
                         <div>{{person.name}}</div>
@@ -91,17 +98,17 @@
                         <div class="caption grey--text">Status</div>
                         <div>
                           <!-- <v-chip small :class="`${person.status} white--text caption`">{{person.status}}</v-chip> -->
-                        </div>
+                        <!-- </div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Update</div>
                         <!-- <div>
                           <v-btn round outline flat small color="green" @click="update(person)">Accept</v-btn>
                         </div> -->
-                        <v-icon dark right>check_circle</v-icon>
+                        <!-- <v-icon dark right>check_circle</v-icon>
                       </v-flex>
                     <v-divider></v-divider>
-                  </v-card>
+                  </v-card> --> 
         </v-container>
 </template>
 
@@ -166,14 +173,23 @@ import axios from "axios";
       getSelectSubmitted(){
       /* eslint-disable no-console */
       console.log(this.model);
-      JSON.stringify(this.projectsList);
-      this.projectsList = Object.values(this.projectsList);
-       this.personList = this.projectsList.filter(obj => {
-          if(obj.person === this.model){
-              return obj;
+      if(this.model){
+          if (typeof(this.model) != 'undefined' && this.model != null){
+                    JSON.stringify(this.projectsList);
+                    this.projectsList = Object.values(this.projectsList);
+                    this.personList = this.projectsList.filter(obj => {
+                        if(obj.person === this.model){
+                            return obj;
+                    }
+              });
           }
-          });
-
+      }
+       else{
+          console.log("This is an alert");
+          alert("Please end a valid Value to search...");
+      }
+      
+  if (typeof(this.model) != 'undefined' && this.model != null){
       JSON.stringify(this.groupList);
       this.groupList = Object.values(this.groupList);
       this.groupList = this.groupList[0];
@@ -183,15 +199,14 @@ import axios from "axios";
               return obj;
           }
           });
-      }
-       
+        }
+      } else{
           console.log(this.personList);
           console.log(this.groupList);
-
+      }
     }, 
 
     clearSelected(){
-        console.log(this.model);
         this.selected="";
         this.model="";
         this.personList="";

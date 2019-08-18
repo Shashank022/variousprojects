@@ -15,12 +15,12 @@
                     <div class="subheading">{{person.role}}</div>
                 </v-card-text>
                 <v-btn flat color="green" @click="getallDetails(person)">Submit</v-btn>
-                    <!-- <v-card-action>
+                    <v-card-text>
                           <v-btn flat color="grey">
                               <v-icon small left>message</v-icon>
                               <span>Message</span>
                           </v-btn>
-                    </v-card-action> -->
+                    </v-card-text>
                 </v-card>
                 <span>
                     <v-expansion-panel>

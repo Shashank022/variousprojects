@@ -99,6 +99,7 @@ export default {
       axios.post(endpoint, jsonSend).then(function(response) {
           _this.dataList = response.data;
           console.log(_this.dataList);
+
       });
 
     },
