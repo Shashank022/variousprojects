@@ -110,9 +110,9 @@ export default {
         console.log(personObj);
       
       
-      axios.get({
+      // axios.get({
         
-      });
+      // });
 
 
 
