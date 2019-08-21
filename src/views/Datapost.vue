@@ -182,15 +182,31 @@ export default {
     },
     removeProduct: function (project) {
 
+      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      console.log(project);
+      console.log(this.projectsList);
+
       var result = this.projectsList.filter(obj => {
           if(obj.id === id){
             console.log(obj.id+ "@@@@@@@@@@@@@@@@");
-              // var rowId = $row.data('id');
-              // rootRef.child(rowId).remove();
+               var rowId = $row.data('id');
+              rootRef.child(rowId).remove();
           }
-           
-          })
+          });
+      console.log(result); 
+
      
+        JSON.stringify(this.projectsList);
+              this.projectsList = Object.values(this.projectsList);
+              this.personList = this.projectsList.filter(obj => {
+                  if(obj.person === this.model){
+                    console.log(obj);
+                      return obj;
+                  }
+                  });
+
+
+
   // removeProduct: function (project) {
   //   var currentRef = database.ref('id/' + project.id);
   //   currentRef.remove();
