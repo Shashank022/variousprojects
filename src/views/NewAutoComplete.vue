@@ -1,6 +1,13 @@
 <template>
         <v-container>
+          <div>
+                <v-alert type="error" v-if="this.model">
+                          I'm an error alert.
+                    </v-alert>
+          </div>
+          <div>
                 <v-card>
+                  <v-card-title class="headline green--text"> Auto Complete with Details Display</v-card-title>
                     <v-card-text>
                       <v-autocomplete
                         v-model="model"
@@ -18,6 +25,7 @@
                       ></v-autocomplete>
                     </v-card-text>
                 </v-card>
+                </div>
                 <v-card>
                     <v-card-text class="text-xs-left">
                       <span>Selected  Name: {{model}}</span>
@@ -29,53 +37,52 @@
                     <v-card-text>
 
 
-                      <span>Student Details
-                           Name: {{model}}
-                           College : {{model}}
-                           
-                           </span>
+                      <span>Student Details Name: {{model}}</span>
 
                     </v-card-text>
                 </v-card>
-                <v-card flat v-for="project in this.projectsList" :key="project.id" :search="search">
-                    <v-layout row wrap :class="`pa-1 project ${project.status}`">
+                <v-card flat v-for="person in this.personList" :key="person.id" :search="search">
+                    <v-layout row wrap :class="`pa-1 project ${person.status}`">
 
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Project ID</div>
-                        <div>{{project.id}}</div>
+                        <div>{{person.id}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Project Title</div>
-                        <div>{{project.title}}</div>
+                        <div>{{person.title}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Person</div>
-                        <div>{{project.person}}</div>
+                        <div>{{person.person}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Due Date</div>
-                        <div>{{project.due}}</div>
+                        <div>{{person.due}}</div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Status</div>
                         <div>
-                          <v-chip small :class="`${project.status} white--text caption`">{{project.status}}</v-chip>
+                          <v-chip small :class="`${person.status} white--text caption`">{{person.status}}</v-chip>
                         </div>
                       </v-flex>
                       <v-flex xs4 md2 sm1>
                         <div class="caption grey--text">Update</div>
                         <div>
-                          <v-btn round outline flat small color="green" @click="update(project)">Accept</v-btn>
+                          <v-btn round outline flat small color="green" @click="update(person)">Accept</v-btn>
                         </div>
                         <v-icon dark right>check_circle</v-icon>
                       </v-flex>
                     </v-layout>
                     <v-divider></v-divider>
                   </v-card>
+                  
         </v-container>
 </template>
 
 <script>
+import axios from "axios";
+
   export default {
     name: 'newautocomplete',
 
@@ -105,34 +112,73 @@
         isLoading: false,
         arrowCounter: 0,
         results:[],
-        projectsList:[]
+        projectsList:[],
+        groupList:[],
+        personList:[]
       };
     },
 
     created(){
       /* eslint-disable no-console */
-       this.$http.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
-          this.projectsList = response.data;
-          console.log("%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%"); 
+      const _this= this;
+        axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
+          _this.projectsList = response.data;
           console.log(response.data); 
         }); 
 
+        axios.get("https://vue-firebase-1103b.firebaseio.com/names.json").then(function(response) {
+          _this.groupList = response.data;
+          console.log(_this.groupList); 
+          console.log(response.data); 
+        }); 
+
+        axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
+          console.log(response.data); 
+        }); 
     },
 
     methods:{
       getSelectSubmitted(){
       /* eslint-disable no-console */
-        console.log(this.model);
-        console.log(this.projectsList);
-        for(var i =0; i<this.projectsList.length;i++){
-            console.log(this.projectsList[i]);
+      console.log(this.model);
+      if(this.model){
+          if (typeof(this.model) != 'undefined' && this.model != null){
+                    JSON.stringify(this.projectsList);
+                    this.projectsList = Object.values(this.projectsList);
+                    this.personList = this.projectsList.filter(obj => {
+                        if(obj.person === this.model){
+                            return obj;
+                    }
+              });
+          }
+      }
+       else{
+          console.log("This is an alert");
+          alert("Please end a valid Value to search...");
+      }
+      
+  if (typeof(this.model) != 'undefined' && this.model != null){
+      JSON.stringify(this.groupList);
+      this.groupList = Object.values(this.groupList);
+      this.groupList = this.groupList[0];
+      if(this.groupList){
+        this.groupList = this.groupList.filter(obj => {
+          if(obj.name === this.model){
+              return obj;
+          }
+          });
         }
+      } else{
+          console.log(this.personList);
+          console.log(this.groupList);
+      }
     }, 
 
     clearSelected(){
-        console.log(this.model);
         this.selected="";
         this.model="";
+        this.personList="";
+        this.groupList="";
     }
     }
   }

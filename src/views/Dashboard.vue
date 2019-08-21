@@ -56,6 +56,8 @@
 
 <script>
 
+import axios from 'axios';
+
 export default {
   components: {},
   data() {
@@ -98,34 +100,38 @@ export default {
     },
 
     update(project) {
-      /* eslint-disable no-console */
-        //  let result = this.projects.map(({ id }) => id);
-         this.$http
-        .get("https://vue-project-8ca78.firebaseio.com/info.json")
-        .then(function(response) {
-          //this.blogs = data.body.slice(0, 10);
-          /* eslint-disable no-console */
-          this.projectsList = response.data;
-          console.log(response.data); 
-           
-        }); 
-        var id = project.id;
-        console.log(project);
-        console.log(project.subjects.school); 
-        console.log(project.id);
-        var result = this.projects.filter(obj => {
-          return obj.id === id
-          })
-        console.log(result);
+    // //   const _this = this; 
+    // //   /* eslint-disable no-console */
+    // //     //  let result = this.projects.map(({ id }) => id);
+    // // this.$http.get("https://vue-project-8ca78.firebaseio.com/info.json")
+    // //     .then(function(response) {
+    // //       //this.blogs = data.body.slice(0, 10);
+    // //       /* eslint-disable no-console */
+    // //       this.projectsList = response.data;
+    // //       console.log(response.data); 
+    // //     }); 
+
+         var id = project.id;
+         console.log(project);
+         console.log(project.subjects.school); 
+         console.log(project.id);
+         var result="";
+         if(this.projects){
+            result = this.projects.filter(obj => {
+               return obj.id === id
+           })
+         console.log(result);
       
-      if (result[0].status === "Pending") {
-          result[0].status = "Complete"; //Status Changes to Complete
+        }
+        
+      if (project.status === "Pending") {
+          project.status = "Complete"; //Status Changes to Complete
           console.log("Changed the Status from Pending to Complete");
-      } else if (result[0].status === "Complete") {
-        result[0].status === "Overdue";
+      } else if (project.status === "Complete") {
+        project.status === "Overdue";
         console.log("Changed the Status from Complete to Overdue ");
-      } else if (result[0].status === "Overdue") {
-        result[0].status = "Pending";
+      } else if (project.status === "Overdue") {
+        project.status = "Pending";
         console.log("Changed the Status from Overdue to Pending");
       } 
       /* eslint-disable no-console */

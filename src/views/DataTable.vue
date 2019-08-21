@@ -189,6 +189,7 @@ export default {
       },
       submitAllSelected(){
         const selectedRow = this.selected;
+         /* eslint-disable no-console */
         console.log(selectedRow);
         selectedRow.forEach(function(element){
         console.log(element.name);

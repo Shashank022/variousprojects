@@ -161,14 +161,10 @@ export default {
   deleteDatainProject(project){
       /* eslint-disable no-console */
 
-      console.log("++++++++++++++++++++++++++++++++++")
       console.log(this.projectsList)
-      console.log("++++++++++++++++++++++++++++++++++")
 
         var result = this.projects.filter(obj => {
-          console.log("***************************");
           console.log(obj);
-          console.log("***************************");
           this.$http.patch("https://data-project-3c4fe.firebaseio.com/datainfo.json",obj)
           .then(function(data) {
           // JSON responses are automatically parsed.
@@ -182,15 +178,30 @@ export default {
     },
     removeProduct: function (project) {
 
+      console.log(project);
+      console.log(this.projectsList);
+
       var result = this.projectsList.filter(obj => {
           if(obj.id === id){
             console.log(obj.id+ "@@@@@@@@@@@@@@@@");
-              // var rowId = $row.data('id');
-              // rootRef.child(rowId).remove();
+               var rowId = $row.data('id');
+              rootRef.child(rowId).remove();
           }
-           
-          })
+          });
+      console.log(result); 
+
      
+        JSON.stringify(this.projectsList);
+              this.projectsList = Object.values(this.projectsList);
+              this.personList = this.projectsList.filter(obj => {
+                  if(obj.person === this.model){
+                    console.log(obj);
+                      return obj;
+                  }
+                  });
+
+
+
   // removeProduct: function (project) {
   //   var currentRef = database.ref('id/' + project.id);
   //   currentRef.remove();
