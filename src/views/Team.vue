@@ -126,7 +126,6 @@ export default {
       this.groupList = this.groupList[0];
       if(this.groupList){
         this.groupList = this.groupList.filter(obj => {
-              console.log("$$$$$$$$$$$$$$$$$$$$$###########");
               console.log(obj);
               return obj;
           });
