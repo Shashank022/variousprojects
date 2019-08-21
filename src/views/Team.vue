@@ -59,6 +59,7 @@
                 <v-card-text>
                   <div class="subheading">{{person.name}}</div>
                     <div class="subheading">{{person.role}}</div>
+                    <div class="subheading">Team : {{person.team}}</div>
                 </v-card-text>
                 <v-btn flat color="green" @click="getallDetails(person)">Submit</v-btn>
                 <v-btn flat color="grey"><v-icon small left>message</v-icon><span>Message</span></v-btn>
@@ -86,38 +87,52 @@ export default {
   data(){
     return{
       divDisabled:false, 
+      groupList:[],
       dialog: false,
     team:[
-          {name:'Suresh', role:'Web Developer',avatar:'/avatar-2.png'},
-          {name:'Srinivas', role:'Graphic Developer',avatar:'/avatar-1.png'},
-          {name:'Kiran', role:'Client Side Developer',avatar:'/avatar-2.png'},
-          {name:'Mani', role:'Server Side Developer',avatar:'/avatar-3.png'},
-          {name:'Rajesh', role:'Full Stack Developer',avatar:'/avatar-4.png'},
-          {name:'Rampradsad', role:'Networking Developer',avatar:'/avatar-5.png'},
-          {name:'Mathuli', role:'Full Stack Developer',avatar:'/avatar-4.png'},
-          {name:'Shiva Kumar', role:'Networking Developer',avatar:'/avatar-5.png'},
-          {name:'Raja Kulkarni', role:'Full Stack Developer',avatar:'/avatar-3.png'},
-          {name:'Rameshk', role:'Networking Developer',avatar:'/avatar-5.png'},
-          {name:'Ramesh Naidu', role:'Front End & Back End Developer',avatar:'/avatar-2.png'}
+          {name:'Suresh', role:'Web Developer',avatar:'/avatar-2.png',team:'Warriors'},
+          {name:'Srinivas', role:'Graphic Developer',avatar:'/avatar-1.png',team:'Targeters'},
+          {name:'Kiran', role:'Client Side Developer',avatar:'/avatar-2.png',team:'Eagles'},
+          {name:'Mani', role:'Server Side Developer',avatar:'/avatar-3.png',team:'Warriors'},
+          {name:'Rajesh', role:'Full Stack Developer',avatar:'/avatar-4.png',team:'Hawks'},
+          {name:'Rampradsad', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors'},
+          {name:'Mathuli', role:'Full Stack Developer',avatar:'/avatar-4.png',team:'Targeters'},
+          {name:'Shiva Kumar', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors'},
+          {name:'Raja Kulkarni', role:'Full Stack Developer',avatar:'/avatar-3.png',team:'Hawks'},
+          {name:'Rameshk', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors'},
+          {name:'Ramesh Naidu', role:'Front End & Back End Developer',avatar:'/avatar-2.png',team:'Targeters'}
         ],
     }
   },
 
   methods: {
     "getallDetails":function(personObj){
+      const _this= this;
       /* eslint-disable no-console */
-        console.log("Welcome to the JS Programming...");
         console.log(personObj);
-      
-      
-      // axios.get({
-        
+      // axios.post("https://teams-aa975.firebaseio.com/team.json",personObj).then(function(response){
+      //       console.log(response);
+      //       console.log(response.data);
       // });
+    axios.get("https://teams-aa975.firebaseio.com/team.json").then(function(response){
+            console.log(response.data);
+            _this.groupList = response.data;
+            console.log(_this.groupList);
 
-
-
-        return personObj;
+      });
+      
+      JSON.stringify(this.groupList);
+      this.groupList = Object.values(this.groupList);
+      this.groupList = this.groupList[0];
+      if(this.groupList){
+        this.groupList = this.groupList.filter(obj => {
+              console.log("$$$$$$$$$$$$$$$$$$$$$###########");
+              console.log(obj);
+              return obj;
+          });
+    
     }
+  }
   }
   
 }
