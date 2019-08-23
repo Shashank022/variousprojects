@@ -71,6 +71,8 @@
   </v-container>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   data: () => ({
       pagination: {
@@ -190,10 +192,18 @@ export default {
       submitAllSelected(){
         const selectedRow = this.selected;
          /* eslint-disable no-console */
-        console.log(selectedRow);
+        console.log(selectedRow[0]);
+        console.log(selectedRow[1]);
         selectedRow.forEach(function(element){
         console.log(element.name);
         });
+
+        for(var i=0; i< selectedRow.length; i++){
+          axios.post("https://teams-aa975.firebaseio.com/data.json", selectedRow[i]).then(function(response){
+              console.log(response);
+              console.log(response.data);
+        });
+        }
       },
 
       clearSelected(){
