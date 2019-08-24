@@ -1,9 +1,12 @@
 <template>
         <v-container>
-          <div>
-                <v-alert type="error" v-if="this.model">
-                          I'm an error alert.
-                    </v-alert>
+          <div v-if="this.model">
+              <v-alert
+                border="right"
+                color="blue-grey"
+                dark>
+                The Name searched is not present in the DataBase
+              </v-alert>
           </div>
           <div>
                 <v-card>
@@ -128,8 +131,7 @@ import axios from "axios";
 
         axios.get("https://vue-firebase-1103b.firebaseio.com/names.json").then(function(response) {
           _this.groupList = response.data;
-          console.log(_this.groupList); 
-          console.log(response.data); 
+          console.log(_this.projectsList); 
         }); 
 
         axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
@@ -146,8 +148,13 @@ import axios from "axios";
                     JSON.stringify(this.projectsList);
                     this.projectsList = Object.values(this.projectsList);
                     this.personList = this.projectsList.filter(obj => {
+                      if (typeof(obj) != 'undefined' && obj != null){
                         if(obj.person === this.model){
-                            return obj;
+                                        return obj;
+                        }
+                    } else {
+                        // console.log("This is an alert");
+                        // alert("The Name searched doesn't exsisit in the DataBase");
                     }
               });
           }
