@@ -150,7 +150,7 @@ import axios from "axios";
                     this.personList = this.projectsList.filter(obj => {
                       if (typeof(obj) != 'undefined' && obj != null){
                         if(obj.person === this.model){
-                                        return obj;
+                            return obj;
                         }
                     } else {
                         // console.log("This is an alert");

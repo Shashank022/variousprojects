@@ -16,7 +16,6 @@
       </div>
       </span>
       <v-card>
-        
         <span class="no-print">
         <v-card-title id="serverpage" class="font-weight-bold">Server's Data
           <v-spacer></v-spacer>
@@ -29,7 +28,6 @@
           ></v-text-field>
         </v-card-title>
         </span>
-          </v-card>
         <v-data-table  
             v-model="selected"
             :headers="headers" 
@@ -53,7 +51,6 @@
             <td>{{ props.item.subjects.rollNo }}</td>
             <td>{{ props.item.subjects.class }}</td>
             <td>{{ props.item.subjects.school }}</td>
-
           </template>
           <v-alert
             v-slot:no-results
@@ -62,31 +59,35 @@
             icon="warning"
           >Your search for "{{ search }}" found no results.</v-alert>
         </v-data-table>
+        </v-card>
         <span class="no-print">
          <div class="text-xs-right">
           <v-btn round color="primary" dark @click="clearAllSelected">Clear</v-btn>
           <v-btn round color="primary" dark @click="getAllSelected">Submit</v-btn>
         </div>
         </span>
-
-          <div v-if="selectedRowList.length > 0">
-            <v-layout>
-              <span>All the Information Data:</span>
-              <div v-for="selc in selectedRowList" :key="selc.id">
-                <v-flex xs6>
-                  ID: {{selc.id}}
-                </v-flex>
-                <v-flex xs6>
-                  <span>    Due By:  {{selc.due}}</span>
-                </v-flex>
-                  <v-flex xs6>
-                    <span>Name: {{selc.person}}</span>
-                  </v-flex>
-                  <v-flex xs12>
-                    <span>Lab Server Data: {{selc.title}}</span>
-                  </v-flex>
-              </div>
-            </v-layout>
+         <div v-if="selectedRowList.length > 0">
+            <v-card>
+              <v-card-text>
+                <v-layout>
+                          <span>All the Information Data:</span>
+                          <div v-for="selc in selectedRowList" :key="selc.id">
+                            <v-flex xs12>
+                              ID: {{selc.id}}
+                            </v-flex>
+                            <v-flex xs12>
+                              <span>    Due By:  {{selc.due}}</span>
+                            </v-flex>
+                              <v-flex xs12>
+                                <span>Name: {{selc.person}}</span>
+                              </v-flex>
+                              <v-flex xs12>
+                                <span>Lab Server Data: {{selc.title}}</span>
+                              </v-flex>
+                          </div>
+                        </v-layout>
+              </v-card-text>
+            </v-card>
           </div>
     </v-container>  
   </div>
@@ -130,7 +131,7 @@ export default {
           status: "Pending",
           id: "401",
           subjects: {
-            name: "Mechanical",
+            name: "Electronics",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -156,7 +157,7 @@ export default {
           status: "Complete",
           id: "403",
           subjects: {
-            name: "Mechanical",
+            name: "Automative",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -182,7 +183,7 @@ export default {
           status: "Overdue",
           id: "405",
           subjects: {
-            name: "Mechanical",
+            name: "Audio",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -208,7 +209,7 @@ export default {
           status: "Overdue",
           id: "407",
           subjects: {
-            name: "Mechanical",
+            name: "Neuclear",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -221,7 +222,7 @@ export default {
           status: "Pending",
           id: "408",
           subjects: {
-            name: "Mechanical",
+            name: "Petroleum",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -247,7 +248,7 @@ export default {
           status: "Pending",
           id: "410",
           subjects: {
-            name: "Mechanical",
+            name: "Eletronic Engineering",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -260,7 +261,7 @@ export default {
           status: "Complete",
           id: "411",
           subjects: {
-            name: "Mechanical",
+            name: "Materials Science Engineering",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -273,7 +274,7 @@ export default {
           status: "Overdue",
           id: "434",
           subjects: {
-            name: "Mechanical",
+            name: "Eletrical Engineering",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -299,7 +300,7 @@ export default {
           status: "Complete",
           id: "433",
           subjects: {
-            name: "Mechanical",
+            name: "Eletrical Engineering",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -325,7 +326,7 @@ export default {
           status: "Overdue",
           id: "414",
           subjects: {
-            name: "Mechanical",
+            name: "Law",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -338,7 +339,7 @@ export default {
           status: "Complete",
           id: "415",
           subjects: {
-            name: "Mechanical",
+            name: "Mining and Geological Engineering",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -351,7 +352,7 @@ export default {
           status: "Pending",
           id: "416",
           subjects: {
-            name: "Mechanical",
+            name: "Information Systems",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -364,7 +365,7 @@ export default {
           status: "Overdue",
           id: "417",
           subjects: {
-            name: "mechanical",
+            name: "Molecular Engineering",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -377,7 +378,7 @@ export default {
           status: "Complete",
           id: "418",
           subjects: {
-            name: "mechanical",
+            name: "Mynastics",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -403,7 +404,7 @@ export default {
           status: "Pending",
           id: "420",
           subjects: {
-            name: "mechanical",
+            name: "BioMedical",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -416,7 +417,7 @@ export default {
           status: "Complete",
           id: "421",
           subjects: {
-            name: "mechanical",
+            name: "Thermal Engineering",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -429,7 +430,7 @@ export default {
           status: "Pending",
           id: "422",
           subjects: {
-            name: "mechanical",
+            name: "Physics",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -455,7 +456,7 @@ export default {
           status: "Overdue",
           id: "424",
           subjects: {
-            name: "mechanical",
+            name: "Aeuronautical",
             rollNo: "4564654",
             class: "III year",
             school: "Vardhaman Engg College"
@@ -509,7 +510,7 @@ export default {
           status: "Complete",
           id: "525",
           subjects: {
-            name: "mechanical",
+            name: "chemical",
             rollNo: "2364654",
             class: "II year",
             school: "Engg College"
