@@ -68,23 +68,32 @@
         </span>
          <div v-if="selectedRowList.length > 0">
             <v-card>
+              <v-card-title class="title primary--text"> Detail's Of Servers</v-card-title>
               <v-card-text>
+                
                 <v-layout>
-                          <span>All the Information Data:</span>
                           <div v-for="selc in selectedRowList" :key="selc.id">
-                            <v-flex xs12>
-                              ID: {{selc.id}}
-                            </v-flex>
-                            <v-flex xs12>
-                              <span>    Due By:  {{selc.due}}</span>
-                            </v-flex>
-                              <v-flex xs12>
-                                <span>Name: {{selc.person}}</span>
-                              </v-flex>
-                              <v-flex xs12>
-                                <span>Lab Server Data: {{selc.title}}</span>
-                              </v-flex>
-                          </div>
+                            <div>
+                                <v-flex xs6>
+                                  <span> <strong>ID:</strong> {{selc.id}}</span>
+                                </v-flex>
+                            </div>
+                            <div>
+                              <v-flex xs6>
+                                <span> <strong>Due By: </strong> {{selc.due}}</span>
+                                </v-flex>
+                            </div>
+                            <div>
+                              <v-flex xs6>
+                                <span> <strong> Name: </strong> {{selc.person}}</span>
+                                </v-flex>
+                              </div>
+                              <div>
+                                <v-flex xs6>
+                                  <span> <strong>Lab Server Data:</strong> {{selc.title}}</span>
+                                  </v-flex>
+                              </div>
+                              </div>
                         </v-layout>
               </v-card-text>
             </v-card>
