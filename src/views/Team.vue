@@ -40,9 +40,12 @@
                     <v-btn
                       color="primary"
                       text
-                      @click="dialog = false"
+                      @click="saveApprovedApplication"
                     >
-                      I accept
+                      Approve
+                    </v-btn>
+                    <v-btn  color="primary"  text @click="dialog = false">
+                      Close
                     </v-btn>
                   </v-card-actions>
                 </v-card>
@@ -131,6 +134,11 @@ export default {
           });
     
     }
+  },
+
+  saveApprovedApplication:function(){
+    console.log("Welcome to enter the approveal system....!!!");
+    this.dialog = false;
   }
   }
   
