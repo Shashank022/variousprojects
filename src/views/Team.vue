@@ -40,9 +40,12 @@
                     <v-btn
                       color="primary"
                       text
-                      @click="dialog = false"
+                      @click="saveApprovedApplication"
                     >
-                      I accept
+                      Approve
+                    </v-btn>
+                    <v-btn  color="primary"  text @click="dialog = false">
+                      Close
                     </v-btn>
                   </v-card-actions>
                 </v-card>
@@ -61,13 +64,14 @@
                     <div class="subheading">{{person.role}}</div>
                     <div class="subheading">Team : {{person.team}}</div>
                 </v-card-text>
-                <v-btn flat color="green" @click="getallDetails(person)">Submit</v-btn>
-                <v-btn flat color="grey"><v-icon small left>message</v-icon><span>Message</span></v-btn>
+                <v-btn flat color="green" @click="getallDetails(person)" :disabled=submitBtnDisabled>Submit</v-btn>
+                <v-btn flat color="grey"  @click="saveMessage(person)"><v-icon small left>message</v-icon><span>Message</span></v-btn>
                 <div class="text-center">
-                      
+                      <v-textarea v-model="message" label="Message" auto-grow outlined rows="1" row-height="5"
+                      ></v-textarea>
                 </div>
               </v-card>
-                <span>
+                <span>  
                     <v-expansion-panel>
                       <v-expansion-panel-content>{{person.name}}</v-expansion-panel-content>
                       <v-expansion-panel-content>{{person.role}}</v-expansion-panel-content>
@@ -87,20 +91,22 @@ export default {
   data(){
     return{
       divDisabled:false, 
+      submitBtnDisabled:false, 
       groupList:[],
       dialog: false,
+      message:"",
     team:[
-          {name:'Suresh', role:'Web Developer',avatar:'/avatar-2.png',team:'Warriors'},
-          {name:'Srinivas', role:'Graphic Developer',avatar:'/avatar-1.png',team:'Targeters'},
-          {name:'Kiran', role:'Client Side Developer',avatar:'/avatar-2.png',team:'Eagles'},
-          {name:'Mani', role:'Server Side Developer',avatar:'/avatar-3.png',team:'Warriors'},
-          {name:'Rajesh', role:'Full Stack Developer',avatar:'/avatar-4.png',team:'Hawks'},
-          {name:'Rampradsad', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors'},
-          {name:'Mathuli', role:'Full Stack Developer',avatar:'/avatar-4.png',team:'Targeters'},
-          {name:'Shiva Kumar', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors'},
-          {name:'Raja Kulkarni', role:'Full Stack Developer',avatar:'/avatar-3.png',team:'Hawks'},
-          {name:'Rameshk', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors'},
-          {name:'Ramesh Naidu', role:'Front End & Back End Developer',avatar:'/avatar-2.png',team:'Targeters'}
+          {name:'Suresh', role:'Web Developer',avatar:'/avatar-2.png',team:'Warriors', value:true},
+          {name:'Srinivas', role:'Graphic Developer',avatar:'/avatar-1.png',team:'Targeters',value:true},
+          {name:'Kiran', role:'Client Side Developer',avatar:'/avatar-2.png',team:'Eagles',value:true},
+          {name:'Mani', role:'Server Side Developer',avatar:'/avatar-3.png',team:'Warriors', value:true},
+          {name:'Rajesh', role:'Full Stack Developer',avatar:'/avatar-4.png',team:'Hawks', value:true},
+          {name:'Rampradsad', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors', value:true},
+          {name:'Mathuli', role:'Full Stack Developer',avatar:'/avatar-4.png',team:'Targeters', value:true},
+          {name:'Shiva Kumar', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors', value:true},
+          {name:'Raja Kulkarni', role:'Full Stack Developer',avatar:'/avatar-3.png',team:'Hawks', value:true},
+          {name:'Rameshk', role:'Networking Developer',avatar:'/avatar-5.png',team:'Warriors', value:true},
+          {name:'Ramesh Naidu', role:'Front End & Back End Developer',avatar:'/avatar-2.png',team:'Targeters', value:true}
         ],
     }
   },
@@ -108,31 +114,51 @@ export default {
   methods: {
     "getallDetails":function(personObj){
       const _this= this;
+      this.submitBtnDisabled = true;
       /* eslint-disable no-console */
         console.log(personObj);
       // axios.post("https://teams-aa975.firebaseio.com/team.json",personObj).then(function(response){
       //       console.log(response);
       //       console.log(response.data);
       // });
-    axios.get("https://teams-aa975.firebaseio.com/team.json").then(function(response){
-            console.log(response.data);
-            _this.groupList = response.data;
-            console.log(_this.groupList);
+    if (typeof(personObj) != 'undefined' && personObj != null){
+            axios.get("https://teams-aa975.firebaseio.com/team.json").then(function(response){
+                    console.log(response.data);
+                    _this.groupList = response.data;
+                    console.log(_this.groupList);
 
-      });
-      
-      JSON.stringify(this.groupList);
-      this.groupList = Object.values(this.groupList);
-      this.groupList = this.groupList[0];
-      if(this.groupList){
-        this.groupList = this.groupList.filter(obj => {
-              console.log("$$$$$$$$$$$$$$$$$$$$$###########");
-              console.log(obj);
-              return obj;
-          });
+              });
+              
+              JSON.stringify(this.groupList);
+              this.groupList = Object.values(this.groupList);
+              this.groupList = this.groupList[0];
+              if(this.groupList){
+                this.groupList = this.groupList.filter(obj => {
+                      console.log(obj);
+                      return obj;
+                  });
+
+              }
+        }
+  },
+
+  saveApprovedApplication:function(){
+    console.log("Welcome to enter the approveal system....!!!");
+    console.log(this.personObj);
+    this.dialog = false;
     
-    }
+  },
+
+
+  saveMessage(person){
+    console.log(this.message);
+        console.log(person);
+
   }
+
+  // reset(){
+  //   this.submitBtnDisabled = false;
+  // }
   }
   
 }

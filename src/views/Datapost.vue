@@ -161,14 +161,10 @@ export default {
   deleteDatainProject(project){
       /* eslint-disable no-console */
 
-      console.log("++++++++++++++++++++++++++++++++++")
       console.log(this.projectsList)
-      console.log("++++++++++++++++++++++++++++++++++")
 
         var result = this.projects.filter(obj => {
-          console.log("***************************");
           console.log(obj);
-          console.log("***************************");
           this.$http.patch("https://data-project-3c4fe.firebaseio.com/datainfo.json",obj)
           .then(function(data) {
           // JSON responses are automatically parsed.
@@ -182,7 +178,6 @@ export default {
     },
     removeProduct: function (project) {
 
-      console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       console.log(project);
       console.log(this.projectsList);
 
