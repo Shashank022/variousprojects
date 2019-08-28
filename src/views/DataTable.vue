@@ -54,6 +54,7 @@
   </v-data-table>
    <v-btn flat round color="green" dark class="right" @click="submitAllSelected">Submit</v-btn>
       <v-btn flat round color="green" dark class="right" @click="clearSelected">Clear</v-btn>
+      <v-btn flat round color="green" dark class="right" @click="deleteSelectedEntry">Delete</v-btn>
     </v-card>
     <div>
       <v-expansion-panel>
@@ -71,6 +72,8 @@
   </v-container>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   data: () => ({
       pagination: {
@@ -190,15 +193,36 @@ export default {
       submitAllSelected(){
         const selectedRow = this.selected;
          /* eslint-disable no-console */
-        console.log(selectedRow);
+        console.log(selectedRow[0]);
+        console.log(selectedRow[1]);
         selectedRow.forEach(function(element){
         console.log(element.name);
         });
+
+        for(var i=0; i< selectedRow.length; i++){
+          axios.post("https://teams-aa975.firebaseio.com/data.json", selectedRow[i]).then(function(response){
+              console.log(response);
+              console.log(response.data);
+        });
+        }
       },
 
       clearSelected(){
         this.selected =[];
-      }
+      },
+    deleteSelectedEntry(){
+
+      if(this.selected){
+        console.log(this.selected);
+        const selectedRow = this.selected;
+
+        for(var i=0; i< selectedRow.length; i++){
+          axios.delete("https://teams-aa975.firebaseio.com/data.json/", selectedRow[i]).then(function(response){
+                console.log(response.data);
+              });
+            }
+        }
+    }
     }
 };
 </script>
