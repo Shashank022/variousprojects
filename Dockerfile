@@ -1,4 +1,4 @@
-FROM alpine:3.1
+FROM node:10.16.0
 
 # Update
 RUN apk add --update nodejs
@@ -6,6 +6,7 @@ RUN apk add --update nodejs
 # Install app dependencies
 COPY package.json /src/package.json
 RUN cd /src; npm install
+
 
 # Bundle app source
 COPY . /src
