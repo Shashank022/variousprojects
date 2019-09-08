@@ -23,3 +23,4 @@ ENV NODE_ENV ${node_environment:-default}
 RUN npm run build
 
 EXPOSE 3200
+CMD ["node", "/src/main.js"]
