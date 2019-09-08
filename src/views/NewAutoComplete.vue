@@ -186,6 +186,16 @@ import axios from "axios";
         this.model="";
         this.personList="";
         this.groupList="";
+    },
+
+    update(person){
+      if(person.status === "Pending"){
+        person.status = "Complete";
+      } else if(person.status === "Complete"){
+        person.status = "Overdue";
+      }else if(person.status === "Overdue"){
+        person.status = "Pending";
+      }
     }
     }
   }
