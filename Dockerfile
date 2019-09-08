@@ -1,15 +1,26 @@
-FROM node:10.16.0
+FROM node:alpine
 
-# Update
-RUN apk add --update nodejs
+# install simple http server for serving static content
+RUN apk upgrade
 
-# Install app dependencies
-COPY package.json /src/package.json
-RUN cd /src; npm install
+# create app working directory
+WORKDIR /app
 
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY .npmrc .npmrc
+COPY package*.json ./
 
-# Bundle app source
-COPY . /src
+# npm install project dependencies
+RUN npm ci
 
-EXPOSE  8080
-CMD ["node", "/src/index.js"]
+# copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .
+
+ARG node_environment
+ENV NODE_ENV ${node_environment:-default}
+
+# build app for production with minification
+RUN npm run build
+
+EXPOSE 3200
+CMD [ "npm", "start" ]
