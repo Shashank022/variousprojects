@@ -7,7 +7,7 @@ RUN apk upgrade
 WORKDIR /app
 
 # copy both 'package.json' and 'package-lock.json' (if available)
-COPY .npmrc .npmrc
+#COPY .npmrc .npmrc
 COPY package*.json ./
 
 # npm install project dependencies
