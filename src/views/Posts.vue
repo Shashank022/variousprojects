@@ -45,11 +45,11 @@
         <v-date-picker v-model="dueby" @input="menu2 = false" ></v-date-picker>
       </v-menu>
         </v-flex>
+        
         <v-flex xs12 md4 sm2>
           <v-text-field
           label="ID"
-          v-model="dueby"
-
+          v-model="id"
           ></v-text-field>
         </v-flex>
 
@@ -57,9 +57,9 @@
           <v-text-field
             label="Person"
             v-model="person"
-
           ></v-text-field>
         </v-flex>
+
         <v-flex xs12 md4 sm2 >
           <v-text-field
             label="Status"
