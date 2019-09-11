@@ -28,4 +28,5 @@ pipeline {
                 sh 'docker build -t https://github.com/Shashank022/variousprojects:jenkins .'
             }
         }
+    }
 }
