@@ -12,4 +12,4 @@ RUN cd /src; npm install
 COPY . /src
 
 EXPOSE  8000
-CMD ["node", "/src/main.js"]
+CMD ["npm", "start"]
