@@ -1,7 +1,9 @@
-FROM node:10.16.0
+FROM alpine:latest
 
 # Update
-RUN apk add --update nodejs
+RUN apk add --no-cache --update nodejs npm
+
+WORKDIR /app
 
 # Install app dependencies
 COPY package.json /src/package.json
