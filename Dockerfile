@@ -13,4 +13,4 @@ EXPOSE  8000
 
 ENTRYPOINT ["node"]
 
-CMD ["main.js"]
+CMD ["npm","start"]
