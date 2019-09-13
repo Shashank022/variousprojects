@@ -11,4 +11,4 @@ EXPOSE  8000
 
 ENTRYPOINT ["node"]
 
-CMD ["npm","serve"]
+CMD ["npm","run serve"]
