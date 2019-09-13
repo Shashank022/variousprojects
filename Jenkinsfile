@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh "chmod -x './prework.sh'"
+                sh "chmod +x './prework.sh'"
                 sh "./prework.sh"
             }
         }
