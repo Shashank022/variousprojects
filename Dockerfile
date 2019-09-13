@@ -1,17 +1,12 @@
 FROM alpine:latest
 
 # Update
-RUN apk add --no-cache --update nodejs npm
+RUN apk add --no-cache nodejs npm
 
 WORKDIR /app
 
 # Install app dependencies
-COPY package.json /src/package.json
-RUN cd /src; npm install
-
-
-# Bundle app source
-COPY . /src
+COPY . /app
+RUN npm install
 
 EXPOSE  8000
-CMD ["npm", "start"]
