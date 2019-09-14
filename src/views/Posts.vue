@@ -169,6 +169,17 @@ export default {
         console.log(this.status);
         console.log(this.subjects);
         console.log(this.title);
+        const jsonSend = {};
+        jsonSend.dueby = this.dueby;
+        jsonSend.dueby = this.id;
+        jsonSend.dueby = this.person;
+        jsonSend.dueby = this.status;
+        jsonSend.dueby = this.subjects;
+        jsonSend.dueby = this.title;
+
+        axios.post("https://teams-aa975.firebaseio.com/newformdata.json",jsonSend).then(function(response){
+                    console.log(response.data);
+        });
       }
       
     },
