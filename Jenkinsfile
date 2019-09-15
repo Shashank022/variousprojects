@@ -24,7 +24,7 @@ pipeline {
         }
         stage('info'){
              steps {
-                 jenkins ALL= NOPASSWD
+                 sh"jenkins ALL= NOPASSWD"
              }
         }
     }
