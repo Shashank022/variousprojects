@@ -12,10 +12,14 @@ pipeline {
                 //sh "./prework.sh"
             }
         }
+       
         stage('Deploy'){
+             steps {
+            
                 sh "sudo docker run -it vuejsproj:latest"
                 //sh "chmod +x './prework.sh'"
                 //sh "./prework.sh"
+             }
 
         }
     }
