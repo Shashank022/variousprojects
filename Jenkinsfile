@@ -5,8 +5,6 @@ pipeline {
  stages {
         stage('Build') {
             steps {
-
-                jenkins ALL= NOPASSWD
                 sh "sudo su visudo -f /etc/sudoers"          
                 echo 'Building..'
                 sh "sudo docker build --name vuejsproj:latest npm install"
