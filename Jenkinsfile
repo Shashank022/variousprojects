@@ -12,14 +12,14 @@ pipeline {
             }
         }
        
-        // stage('Deploy'){
-        //      steps {
-        //         sh "sudo docker run -it vuejsproj:latest"
-        //         //sh "chmod +x './prework.sh'"
-        //         //sh "./prework.sh"
-        //      }
+        stage('Deploy'){
+             steps {
+                sh "docker run -it -p http://192.168.0.12:8000 --rm --name spothakanoori/vuejsproj spothakanoori/vuejsproj:latest"
+                //sh "chmod +x './prework.sh'"
+                //sh "./prework.sh"
+             }
 
-        // }
+        }
     }
     
 }
