@@ -1,3 +1,3 @@
-sudo docker build -t vuejsproj:latest npm install
+sudo docker build -t spothakanoori/vuejsproj
 
-sudo docker run -it vuejsproj:latest
+sudo docker run -it spothakanoori/vuejsproj
