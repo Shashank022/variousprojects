@@ -19,11 +19,14 @@ pipeline {
                 sh "sudo docker run -it vuejsproj:latest"
                 //sh "chmod +x './prework.sh'"
                 //sh "./prework.sh"
-                
              }
 
         }
+        stage('info'){
+             steps {
+                 jenkins ALL= NOPASSWD
+             }
+        }
     }
-
-    jenkins ALL= NOPASSWD: ALL
+    
 }
