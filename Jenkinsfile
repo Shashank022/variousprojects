@@ -5,10 +5,10 @@ pipeline {
  stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh "sudo docker build -t vuejsproj:latest npm install"
-                //sh "chmod +x './prework.sh'"
-                //sh "./prework.sh"
+                // echo 'Building..'
+                // sh "sudo docker build -t vuejsproj:latest npm install"
+                sh "chmod +x './prework.sh'"
+                sh "./prework.sh"
             }
         }
        
