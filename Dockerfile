@@ -1,5 +1,4 @@
-FROM alpine:latest
-
+FROM node:10.13.0-alpine
 # Update
 RUN apk add --no-cache nodejs npm
 
@@ -9,6 +8,4 @@ RUN npm install
 
 EXPOSE  8000
 
-ENTRYPOINT ["node"]
-
-CMD ["npm","run serve"]
+CMD ["npm","start"]
