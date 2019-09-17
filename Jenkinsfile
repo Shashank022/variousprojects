@@ -11,10 +11,23 @@ pipeline {
                 sh "./prework.sh"
             }
         }
+
+          stage('test') {
+            steps {
+                echo 'Building anotherJob and getting the log'
+                script {
+                    def bRun = build 'anotherJob' 
+                    echo 'last 100 lines of BuildB'
+                    for(String line : bRun.getRawBuild().getLog(100)){
+                        echo line
+                    }
+                }
+            }
+          }
        
         stage('Deploy'){
              steps {
-                sh "docker run -it -p http://192.168.0.12:8000 --rm --name spothakanoori/vuejsproj spothakanoori/vuejsproj:latest"
+                 echo "This is log"
                 //sh "chmod +x './prework.sh'"
                 //sh "./prework.sh"
              }
