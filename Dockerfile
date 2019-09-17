@@ -3,7 +3,7 @@ FROM node:10.13.0-alpine
 RUN apk add --no-cache nodejs npm
 
 # Install app dependencies
-COPY package.json /src/package.json
+COPY package.json ./package.json
 RUN npm install
 
 EXPOSE  8000
