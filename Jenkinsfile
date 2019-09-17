@@ -12,7 +12,7 @@ pipeline {
             }
         }
 
-          stage('test') {
+          stage('Test') {
             steps {
                 echo 'Building anotherJob and getting the log'
                 script {
