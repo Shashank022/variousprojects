@@ -1,15 +1,13 @@
-FROM node:10.16.0
+FROM node:10.13.0-alpine
+WORKDIR /app
 
 # Update
-RUN apk add --update nodejs
+RUN apk add --no-cache nodejs npm
 
 # Install app dependencies
-COPY package.json /src/package.json
-RUN cd /src; npm install
+COPY package.json ./package.json
+RUN npm install
 
+EXPOSE  8000
 
-# Bundle app source
-COPY . /src
-
-EXPOSE  8080
-CMD ["node", "/src/main.js"]
+CMD ["npm","run","serve"]
