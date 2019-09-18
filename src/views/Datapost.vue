@@ -181,7 +181,9 @@ export default {
       console.log(project);
       console.log(this.projectsList);
 
-      var result = this.projectsList.filter(obj => {
+      if(project){
+
+        var result = this.projectsList.filter(obj => {
           if(obj.id === id){
             console.log(obj.id+ "@@@@@@@@@@@@@@@@");
                var rowId = $row.data('id');
@@ -200,6 +202,10 @@ export default {
                   }
                   });
 
+
+      }
+
+      
 
 
   // removeProduct: function (project) {

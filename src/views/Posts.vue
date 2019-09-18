@@ -10,20 +10,20 @@
             <th>Posted at</th>
           </tr>
         </thead>
-        <tbody>
+        <!-- <tbody>
           <tr v-for="post in posts" :key=post.title>
             <td>{{post.title.rendered}}</td>
             <td>{{post.date_gmt}}</td>
           </tr>
-        </tbody>
+        </tbody> -->
       </table>
       <v-divider></v-divider>
-      <pagination
+      <!-- <pagination
         class="justify-around-right"
         :pagination="pagination"
         @prev="--postsData.page; getPosts();"
         @next="postsData.page++; getPosts();"
-      ></pagination>
+      ></pagination> -->
     </div>
 
     <div></div>
@@ -45,11 +45,11 @@
         <v-date-picker v-model="dueby" @input="menu2 = false" ></v-date-picker>
       </v-menu>
         </v-flex>
+
         <v-flex xs12 md4 sm2>
           <v-text-field
           label="ID"
-          v-model="dueby"
-
+          v-model="id"
           ></v-text-field>
         </v-flex>
 
@@ -57,9 +57,9 @@
           <v-text-field
             label="Person"
             v-model="person"
-
           ></v-text-field>
         </v-flex>
+
         <v-flex xs12 md4 sm2 >
           <v-text-field
             label="Status"
@@ -80,7 +80,9 @@
             v-model="title"
           ></v-text-field>
         </v-flex>
-    <v-btn round color="green" class="black--text" @click="getFormSubmitted()"> Submit</v-btn>
+    <v-btn round color="green" class="black--text" @click="getFormSubmitted()">Submit</v-btn>
+        <v-btn round color="green" class="black--text" @click="ClearAll()">Clear</v-btn>
+
       </v-layout>
 
   </v-Container>
@@ -115,10 +117,12 @@ export default {
         to: "",
         total: ""
       },
+      id:"",
       dueby:"",
       status:"",
       person:"",
-      subjects:""
+      subjects:"",
+      title:"",
     };
   },
   methods: {
@@ -158,7 +162,34 @@ export default {
             //url: https://myvueproject-d84e4.firebaseio.com  /
     },
     getFormSubmitted(){
+      if(this.dueby){
+        console.log(this.dueby);
+        console.log(this.id);
+        console.log(this.person);
+        console.log(this.status);
+        console.log(this.subjects);
+        console.log(this.title);
+        const jsonSend = {};
+        jsonSend.dueby = this.dueby;
+        jsonSend.dueby = this.id;
+        jsonSend.dueby = this.person;
+        jsonSend.dueby = this.status;
+        jsonSend.dueby = this.subjects;
+        jsonSend.dueby = this.title;
 
+        axios.post("https://teams-aa975.firebaseio.com/newformdata.json",jsonSend).then(function(response){
+                    console.log(response.data);
+        });
+      }
+      
+    },
+    ClearAll(){
+      this.dueby ="";
+      this.id ="";
+      this.person ="";
+      this.status ="";
+      this.subjects ="";
+      this.title ="";
     }
      
   }
