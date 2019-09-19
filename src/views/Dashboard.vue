@@ -128,6 +128,7 @@ export default {
           project.status = "Complete"; //Status Changes to Complete
           console.log("Changed the Status from Pending to Complete");
       } else if (project.status === "Complete") {
+        console.log(project.status);
         project.status === "Overdue";
         console.log("Changed the Status from Complete to Overdue ");
       } else if (project.status === "Overdue") {
