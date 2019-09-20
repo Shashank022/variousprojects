@@ -73,9 +73,8 @@ export default {
         { icon: "fingerprint", text: "New Auto Complete", route: "/newautocomplete" },
         { icon: "restore", text: "Shipping Cart", route: "/shippingcart" },
         { icon: "update", text: "Add User", route: "/newuserform" },
-        { icon: "alarm_on", text: "Expansion Panel", route: "/expansionpanel" }
-
-
+        { icon: "alarm_on", text: "Expansion Panel", route: "/expansionpanel" },
+        { icon: "school", text: "Git Hub", route: "/github" }
       ]
     };
   }

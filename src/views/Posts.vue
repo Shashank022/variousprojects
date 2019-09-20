@@ -84,7 +84,12 @@
         <v-btn round color="green" class="black--text" @click="ClearAll()">Clear</v-btn>
 
       </v-layout>
-
+      <div v-if="showDivnow">
+        <v-layout>
+            The Record has been sucessfully saved.......!!!
+        </v-layout>
+      </div>
+      
   </v-Container>
 </template>
           
@@ -102,6 +107,7 @@ export default {
     return {
       postsUrl: "http://demo.wp-api.org/wp-json/wp/v2/posts",
       posts: [],
+      showDivnow:false,
       picker: new Date().toISOString().substr(0, 10),
       landscape: false,
       reactive: false,
@@ -124,6 +130,9 @@ export default {
       subjects:"",
       title:"",
     };
+  },
+  created(){
+    this.showDivnow = true;
   },
   methods: {
     getPosts() {
@@ -179,6 +188,7 @@ export default {
 
         axios.post("https://teams-aa975.firebaseio.com/newformdata.json",jsonSend).then(function(response){
                     console.log(response.data);
+                    this.showDivnow = true;
         });
       }
       
