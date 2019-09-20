@@ -16,10 +16,7 @@ export default {
         };
     },
     methods: {
-        onChangePage(pageOfItems) {
-            // update page of items
-            this.pageOfItems = pageOfItems;
-        }
+        
     }
 };
 </script>
