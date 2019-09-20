@@ -18,7 +18,7 @@ export default {
     methods: {
 
     created() {
-      axios.post("http://jsonplaceholder.typicode.com/posts")
+      axios.post("https://api.github.com")
         .then(function(data) {
           this.blogs = data.body.slice(0, 10);
           /* eslint-disable no-console */
