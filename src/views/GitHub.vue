@@ -1,9 +1,9 @@
 <template>
-    <div class="card text-center m-3">
-        <h3 class="card-header">Vue.js Pagination Tutorial & Example</h3>
+    <div>
+        <h3>Vue.js Pagination Tutorial & Example</h3>
         <div class="card-body">
         </div>
-        <div class="card-footer pb-0 pt-3">
+        <div>
         </div>
     </div>
 </template>
@@ -16,6 +16,15 @@ export default {
         };
     },
     methods: {
+
+    created() {
+      axios.post("http://jsonplaceholder.typicode.com/posts")
+        .then(function(data) {
+          this.blogs = data.body.slice(0, 10);
+          /* eslint-disable no-console */
+          console.log(data);
+        });
+    },
         
     }
 };
