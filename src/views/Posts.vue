@@ -89,7 +89,11 @@
             The Record has been sucessfully saved.......!!!
         </v-layout>
       </div>
-      
+      <!-- <div v-else>
+        <v-layout>
+            The Record is already exissited on the Account.......!!!
+        </v-layout>
+      </div> -->
   </v-Container>
 </template>
           
@@ -107,6 +111,7 @@ export default {
     return {
       postsUrl: "http://demo.wp-api.org/wp-json/wp/v2/posts",
       posts: [],
+      customerList:[],
       showDivnow:false,
       picker: new Date().toISOString().substr(0, 10),
       landscape: false,
@@ -132,7 +137,7 @@ export default {
     };
   },
   created(){
-    this.showDivnow = true;
+    //this.showDivnow = true;
   },
   methods: {
     getPosts() {
@@ -171,29 +176,41 @@ export default {
             //url: https://myvueproject-d84e4.firebaseio.com  /
     },
     getFormSubmitted(){
+      let _this = this;
       if(this.dueby){
-        console.log(this.dueby);
-        console.log(this.id);
-        console.log(this.person);
-        console.log(this.status);
-        console.log(this.subjects);
-        console.log(this.title);
-        const jsonSend = {};
-        jsonSend.dueby = this.dueby;
-        jsonSend.dueby = this.id;
-        jsonSend.dueby = this.person;
-        jsonSend.dueby = this.status;
-        jsonSend.dueby = this.subjects;
-        jsonSend.dueby = this.title;
-
-        axios.post("https://teams-aa975.firebaseio.com/newformdata.json",jsonSend).then(function(response){
-                    console.log(response.data);
-                    this.showDivnow = true;
+      axios.get("https://teams-aa975.firebaseio.com/newformdata.json").then(function(response){
+          _this.customerList = response.data;
+          console.log(response.data);
         });
+
+        for(var i=0; i< _this.customerList;i++){
+          if(this.id === _this.customerList[i].id){
+                this.showDivnow = true;
+                console.log(this.dueby);
+                console.log(this.id);
+                console.log(this.person);
+                console.log(this.status);
+                console.log(this.subjects);
+                console.log(this.title);
+                const jsonSend = {};
+                jsonSend.dueby = this.dueby;
+                jsonSend.dueby = this.id;
+                jsonSend.dueby = this.person;
+                jsonSend.dueby = this.status;
+                jsonSend.dueby = this.subjects;
+                jsonSend.dueby = this.title;
+
+          axios.post("https://teams-aa975.firebaseio.com/newformdata.json",jsonSend).then(function(response){
+                console.log(response.data);
+                });
+          } else {
+            this.showDivnow = false;
+          }
       }
-      
-    },
+   }
+},
     ClearAll(){
+      this.showDivnow = false;
       this.dueby ="";
       this.id ="";
       this.person ="";
