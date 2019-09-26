@@ -148,6 +148,7 @@ export default {
   data() {
     return {
       search: "",
+      dialog:"",
       selected: [],
       listofSelectedList:[],
       fullUrl:"",
@@ -619,17 +620,21 @@ export default {
 
     getAllDetails(){
           console.log("Genrated URL will br on print......");
+
           var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
 
-           this.fullUrl = window.location.origin + path;
+          this.fullUrl = document.URL;
+          //window.location.origin + path;
+          console.log(this.fullUrl);
           console.log(this.selected);
-          console.log(this.selected.length);
-          console.log(this.listofSelectedList);
+          // console.log(this.selected);
+          // console.log(this.selected.length);
+          // console.log(this.listofSelectedList);
 
-          for(var i=0; i< this.selected.length;i++){
-            console.log(this.selected[i]);
-            this.listofSelectedList.push(this.selected[i]);
-          }
+          // for(var i=0; i< this.selected.length;i++){
+          //   console.log(this.selected[i]);
+          //   this.listofSelectedList.push(this.selected[i]);
+          // }
           console.log(this.fullUrl);
     },
 
