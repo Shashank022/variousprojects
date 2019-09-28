@@ -170,7 +170,7 @@ export default {
         { text: "School", value: "id" },
       ],
       pagination: {
-                rowsPerPage: 25,
+                rowsPerPage: 5,
                 page: 1
             },
       projects: [
@@ -620,6 +620,9 @@ export default {
 
     getAllDetails(){
           console.log("Genrated URL will br on print......");
+
+          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+          console.log(this.$route);
 
           var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
 
