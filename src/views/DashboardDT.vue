@@ -7,6 +7,44 @@
       </div>
       <span class="no-print">
         <div class="text-xs-right">
+          <v-layout>
+            <v-dialog
+                v-model="dialog" width="500">
+                <template v-slot:activator="{ on }">
+                  <v-btn 
+                    class="text-xs-right"
+                    color="red lighten-2"
+                    dark
+                    v-on="on"
+                    @click="getAllDetails()"
+                  > url
+                  </v-btn>
+                </template>
+
+                <v-card>
+                  <v-card-title
+                    class="headline grey lighten-2"
+                    primary-title> Copy the URL
+                  </v-card-title>
+                  <v-card-text>
+                      {{fullUrl}}
+                  </v-card-text>
+                  <v-divider></v-divider>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="primary"
+                      text
+                      @click="saveApprovedApplication">
+                      Approve
+                    </v-btn>
+                    <v-btn  color="primary"  text @click="dialog = false">
+                      Close
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+        </v-layout>
           <v-tooltip bottom>
              <template v-slot:activator="{ on }">
                   <v-btn color="primary" dark v-on="on" @click="printMyPage()"><v-icon>print</v-icon></v-btn>
@@ -110,7 +148,10 @@ export default {
   data() {
     return {
       search: "",
+      dialog:"",
       selected: [],
+      listofSelectedList:[],
+      fullUrl:"",
       selectedRowList: [],
   headers: [
         {
@@ -577,6 +618,26 @@ export default {
           console.log(this.selectedRowList);
     },
 
+    getAllDetails(){
+          console.log("Genrated URL will br on print......");
+
+          var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
+
+          this.fullUrl = document.URL;
+          //window.location.origin + path;
+          console.log(this.fullUrl);
+          console.log(this.selected);
+          // console.log(this.selected);
+          // console.log(this.selected.length);
+          // console.log(this.listofSelectedList);
+
+          // for(var i=0; i< this.selected.length;i++){
+          //   console.log(this.selected[i]);
+          //   this.listofSelectedList.push(this.selected[i]);
+          // }
+          console.log(this.fullUrl);
+    },
+
         clearAllSelected(){
           this.selected = [];
           this.selectedRowList=[];
@@ -585,6 +646,13 @@ export default {
       console.log(document.getElementsByClassName('header-footer'));
       document.getElementsByClassName('header-footer').checked = false;
       window.print();
+    },
+    generateUrl(){
+
+    },
+
+    saveApprovedApplication(){
+      console.log("#######################");
     }
   },
 };

@@ -61,6 +61,7 @@ export default {
     return {
       drawer: false,
       links: [
+        { icon: "school", text: "Git Hub", route: "/github" },
         { icon: "dashboard", text: "Dashboard", route: "/" },
         { icon: "folder", text: "Servers", route: "/projects" },
         { icon: "person", text: "Team", route: "/team" },
@@ -74,8 +75,6 @@ export default {
         { icon: "restore", text: "Shipping Cart", route: "/shippingcart" },
         { icon: "update", text: "Add User", route: "/newuserform" },
         { icon: "alarm_on", text: "Expansion Panel", route: "/expansionpanel" }
-
-
       ]
     };
   }

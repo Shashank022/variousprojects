@@ -13,6 +13,8 @@ import NewAutoComplete from "./views/NewAutoComplete.vue";
 import Shippingcart from "./views/Shippingcart.vue";
 import Newform from "./views/Newform.vue";
 import ExpansionPanel from "./views/ExpansionPanel.vue";
+import GitHub from "./views/GitHub.vue";
+
 
 Vue.use(Router);
 
@@ -84,6 +86,11 @@ export default new Router({
       path: "/expansionpanel",
       name: "ExpansionPanel",
       component: ExpansionPanel 
+    },
+    {
+      path: "/github",
+      name: "Git Hub",
+      component: GitHub 
     },
 //
   ]
