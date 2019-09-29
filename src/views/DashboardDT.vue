@@ -11,14 +11,9 @@
             <v-dialog
                 v-model="dialog" width="500">
                 <template v-slot:activator="{ on }">
-                  <v-btn 
-                    class="text-xs-right"
-                    color="red lighten-2"
-                    dark
+                  <v-btn  class="text-xs-right" color="red lighten-2" dark
                     v-on="on"
-                    @click="getAllDetails()"
-                  > url
-                  </v-btn>
+                    @click="getAllDetails()"> Genrate URL</v-btn>
                 </template>
 
                 <v-card>
@@ -170,7 +165,7 @@ export default {
         { text: "School", value: "id" },
       ],
       pagination: {
-                rowsPerPage: 25,
+                rowsPerPage: 5,
                 page: 1
             },
       projects: [
@@ -620,21 +615,19 @@ export default {
 
     getAllDetails(){
           console.log("Genrated URL will br on print......");
-
-          var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
-
+          //var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
           this.fullUrl = document.URL;
-          //window.location.origin + path;
+          const _this = this;
+          console.log(_this.$route.query.selected);
           console.log(this.fullUrl);
           console.log(this.selected);
-          // console.log(this.selected);
-          // console.log(this.selected.length);
-          // console.log(this.listofSelectedList);
+         // var selectedciId = obj.options[obj.selectedIndex];
+        
+        for(var i=0; i< this.selected.length;i++){
+            console.log(this.selected[i].id);
+            this.fullUrl+= "selectedItem="+ this.selected[i].id;
+          }
 
-          // for(var i=0; i< this.selected.length;i++){
-          //   console.log(this.selected[i]);
-          //   this.listofSelectedList.push(this.selected[i]);
-          // }
           console.log(this.fullUrl);
     },
 
