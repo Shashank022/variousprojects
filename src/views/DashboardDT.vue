@@ -616,16 +616,16 @@ export default {
     getAllDetails(){
           console.log("Genrated URL will br on print......");
           //var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
-          this.fullUrl = document.URL;
+          this.fullUrl = document.URL + "?";
           const _this = this;
-          console.log(_this.$route.query.selected);
+          console.log(_this.$route.querys);
           console.log(this.fullUrl);
           console.log(this.selected);
          // var selectedciId = obj.options[obj.selectedIndex];
         
         for(var i=0; i< this.selected.length;i++){
             console.log(this.selected[i].id);
-            this.fullUrl+= "selectedItem="+ this.selected[i].id;
+            this.fullUrl+= "&selectedItem="+ this.selected[i].id;
           }
 
           console.log(this.fullUrl);
