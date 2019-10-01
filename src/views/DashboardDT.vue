@@ -627,10 +627,9 @@ export default {
             console.log(this.selected[i].id);
             this.fullUrl+= "&selectedItem="+ this.selected[i].id;
           }
-
           console.log(this.fullUrl);
+          console.log(this.selected);
     },
-
         clearAllSelected(){
           this.selected = [];
           this.selectedRowList=[];
