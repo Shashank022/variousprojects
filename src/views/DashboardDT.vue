@@ -27,12 +27,12 @@
                   <v-divider></v-divider>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn
+                    <!-- <v-btn
                       color="primary"
                       text
                       @click="saveApprovedApplication">
                       Approve
-                    </v-btn>
+                    </v-btn> -->
                     <v-btn  color="primary"  text @click="dialog = false">
                       Close
                     </v-btn>
@@ -583,6 +583,11 @@ export default {
         });
     },
 
+    beforeUpdate(){
+        console.log("#############################################");
+        console.log(this.$route.query);
+    },
+
     update(id) {
       /* eslint-disable no-console */
       console.log(this.projects.id);
@@ -618,17 +623,17 @@ export default {
           //var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
           this.fullUrl = document.URL + "?";
           const _this = this;
-          console.log(_this.$route.querys);
+          
           console.log(this.fullUrl);
           console.log(this.selected);
          // var selectedciId = obj.options[obj.selectedIndex];
         
         for(var i=0; i< this.selected.length;i++){
             console.log(this.selected[i].id);
-            this.fullUrl+= "&selectedItem="+ this.selected[i].id;
+            this.fullUrl+= "selectedItem="+ this.selected[i].id + "&";
           }
-
           console.log(this.fullUrl);
+          console.log(_this.$route.query);
     },
 
         clearAllSelected(){
