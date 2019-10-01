@@ -634,8 +634,8 @@ export default {
           }
           console.log(this.fullUrl);
           console.log(_this.$route.query);
+          console.log(this.selected);
     },
-
         clearAllSelected(){
           this.selected = [];
           this.selectedRowList=[];
