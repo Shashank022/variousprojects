@@ -619,26 +619,24 @@ export default {
     },
 
     getAllDetails(){
-          console.log("Genrated URL will br on print......");
-
+          
           console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
           console.log(this.$route);
+          console.log(this.$route);
+ 
+          //this.$route.query = this.selected;
 
           var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
-
           this.fullUrl = document.URL;
           //window.location.origin + path;
+
+          for(var i=0; i< this.selected.length;i++){
+            console.log(this.selected[i]);
+            //this.$route.query = this.selected[i];
+            //this.listofSelectedList.push(this.selected[i]);
+          }
           console.log(this.fullUrl);
           console.log(this.selected);
-          // console.log(this.selected);
-          // console.log(this.selected.length);
-          // console.log(this.listofSelectedList);
-
-          // for(var i=0; i< this.selected.length;i++){
-          //   console.log(this.selected[i]);
-          //   this.listofSelectedList.push(this.selected[i]);
-          // }
-          console.log(this.fullUrl);
     },
 
         clearAllSelected(){
