@@ -601,6 +601,11 @@ export default {
 
   methods: {
 
+    beforeUpdate(){
+        console.log("#############################################");
+        console.log(this.$route.query);
+    },
+
     update(id) {
       /* eslint-disable no-console */
       console.log(this.projects.id);
@@ -636,6 +641,7 @@ export default {
           console.log("Genrated URL will br on print......");
           const _this = this;
           _this.fullUrl = document.URL + "?";
+
           console.log(this.fullUrl);
           console.log(this.selected);
         
@@ -645,6 +651,7 @@ export default {
           }
           this.getAllSelected();
           console.log(this.fullUrl);
+          console.log(_this.$route.query);
           console.log(this.selected);
     },
         clearAllSelected(){
