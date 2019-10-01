@@ -11,14 +11,9 @@
             <v-dialog
                 v-model="dialog" width="500">
                 <template v-slot:activator="{ on }">
-                  <v-btn 
-                    class="text-xs-right"
-                    color="red lighten-2"
-                    dark
+                  <v-btn  class="text-xs-right" color="red lighten-2" dark
                     v-on="on"
-                    @click="getAllDetails()"
-                  > url
-                  </v-btn>
+                    @click="getAllDetails()"> Genrate URL</v-btn>
                 </template>
 
                 <v-card>
@@ -619,26 +614,22 @@ export default {
     },
 
     getAllDetails(){
-          
-          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-          console.log(this.$route);
-          console.log(this.$route);
- 
-          //this.$route.query = this.selected;
-
-          var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
-          this.fullUrl = document.URL;
-          //window.location.origin + path;
-
-          for(var i=0; i< this.selected.length;i++){
-            console.log(this.selected[i]);
-            //this.$route.query = this.selected[i];
-            //this.listofSelectedList.push(this.selected[i]);
+          console.log("Genrated URL will br on print......");
+          //var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
+          this.fullUrl = document.URL + "?";
+          const _this = this;
+          console.log(_this.$route.querys);
+          console.log(this.fullUrl);
+          console.log(this.selected);
+         // var selectedciId = obj.options[obj.selectedIndex];
+        
+        for(var i=0; i< this.selected.length;i++){
+            console.log(this.selected[i].id);
+            this.fullUrl+= "&selectedItem="+ this.selected[i].id;
           }
           console.log(this.fullUrl);
           console.log(this.selected);
     },
-
         clearAllSelected(){
           this.selected = [];
           this.selectedRowList=[];
