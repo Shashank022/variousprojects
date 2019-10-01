@@ -11,7 +11,7 @@
             <v-dialog
                 v-model="dialog" width="500">
                 <template v-slot:activator="{ on }">
-                  <v-btn  class="text-xs-right" color="red lighten-2" dark
+                  <v-btn round small class="text-xs-right" color="red lighten-2" dark
                     v-on="on"
                     @click="getAllDetails()"> Genrate URL</v-btn>
                 </template>
@@ -27,13 +27,13 @@
                   <v-divider></v-divider>
                   <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn
+                    <!-- <v-btn
                       color="primary"
                       text
                       @click="saveApprovedApplication">
                       Approve
-                    </v-btn>
-                    <v-btn  color="primary"  text @click="dialog = false">
+                    </v-btn> -->
+                    <v-btn  color="primary" round small text @click="dialog = false">
                       Close
                     </v-btn>
                   </v-card-actions>
@@ -42,7 +42,7 @@
         </v-layout>
           <v-tooltip bottom>
              <template v-slot:activator="{ on }">
-                  <v-btn color="primary" dark v-on="on" @click="printMyPage()"><v-icon>print</v-icon></v-btn>
+                  <v-btn round small color="primary" dark v-on="on" @click="printMyPage()"><v-icon>print</v-icon></v-btn>
             </template>
           <span>Print</span>
           </v-tooltip>
@@ -95,8 +95,8 @@
         </v-card>
         <span class="no-print">
          <div class="text-xs-right">
-          <v-btn round color="primary" dark @click="clearAllSelected">Clear</v-btn>
-          <v-btn round color="primary" dark @click="getAllSelected">Submit</v-btn>
+          <v-btn color="primary" round small dark @click="clearAllSelected">Clear</v-btn>
+          <v-btn color="primary" round small dark @click="getAllSelected">Submit</v-btn>
         </div>
         </span>
          <div v-if="selectedRowList.length > 0">
@@ -137,6 +137,7 @@
 
 <script>
 import axios from "axios";
+import { isArray } from 'util';
 
 export default {
   components: {},
@@ -147,6 +148,7 @@ export default {
       selected: [],
       listofSelectedList:[],
       fullUrl:"",
+      projectsList:[],
       selectedRowList: [],
   headers: [
         {
@@ -572,21 +574,38 @@ export default {
       }
     };
   },
-  methods: {
 
-    created() {
-      axios.post("http://jsonplaceholder.typicode.com/posts")
-        .then(function(data) {
-          this.blogs = data.body.slice(0, 10);
-          /* eslint-disable no-console */
-          console.log(data);
+      created() {
+        /* eslint-disable no-console */
+       const _this = this;
+       console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
+          
+          if(isArray(response.data) && response.data.length > 0){
+          _this.projectsList = response.data;
+          console.log(response.data);
+          console.log(this.projectsList);
+          }
+          //this.blogs = response.data.body.slice(0, 10);
         });
     },
+    beforeUpdate(){
+     /* eslint-disable no-console */
+      console.log(this.$route);
+      console.log(this.$route.query);
+
+    },
+
+
+
+
+  methods: {
 
     update(id) {
       /* eslint-disable no-console */
       console.log(this.projects.id);
       console.log(this.projects);
+      console.log(id);
       console.log(status);
       if (this.projects.status === "Pending") {
         // status = "Complete";
@@ -615,18 +634,16 @@ export default {
 
     getAllDetails(){
           console.log("Genrated URL will br on print......");
-          //var path = this.$router.resolve({name: 'team', params: {id: 1}}).href
-          this.fullUrl = document.URL + "?";
           const _this = this;
-          console.log(_this.$route.querys);
+          _this.fullUrl = document.URL + "?";
           console.log(this.fullUrl);
           console.log(this.selected);
-         // var selectedciId = obj.options[obj.selectedIndex];
         
         for(var i=0; i< this.selected.length;i++){
             console.log(this.selected[i].id);
-            this.fullUrl+= "&selectedItem="+ this.selected[i].id;
+            this.fullUrl+= "selectedItem="+ this.selected[i].id + "&";
           }
+          this.getAllSelected();
           console.log(this.fullUrl);
           console.log(this.selected);
     },
