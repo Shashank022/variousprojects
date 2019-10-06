@@ -24,8 +24,9 @@
       <td class="text-xs-right">{{ props.item.id }}</td>
       <td class="text-xs-right">{{ props.item.open_issues }}</td>
       <td class="text-xs-right">{{ props.item.language }}</td>
-      <td class="text-xs-right">{{ getFormattedDate(props.item.updated_at)}}</td>
+      <td class="text-xs-right">{{props.item.updated_at}}</td>
       <td class="text-xs-right">{{ props.item.watchers }}</td>
+      <td class="text-xs-right">{{ getFormattedDate(props.item.updated_at)}}</td>
     </template>
   </v-data-table>
     </div>
@@ -70,24 +71,9 @@ export default {
     },
     methods: {
         getFormattedDate(date){
-          // var theDate = new Date (date);
-          // console.log(theDate.getMonth);
-          // console.log(theDate.getTime());
-          // console.log(theDate.getMonth());
-          var mydate = Date.parse(date);
-          var result = mydate.toString('dddd MMM yyyy h:mm:ss');
-          console.log(result);
-
-          return theDate;
-
-
-          // var theDate = new Date(timeStamp_value * 1000);
-          // dateString = theDate.toGMTString();
-          // console.log(dateString);
-          //return newdate;
+          console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+          console.log(date);
         }
-
-        
     }
 };
 </script>
