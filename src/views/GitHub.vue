@@ -31,6 +31,9 @@
   </v-data-table>
     </div>
     </v-layout>
+    <v-layout>
+    <v-btn round small color="green" class="black--text" @click="getAllIssues()">Get Git Issues</v-btn>
+    </v-layout>
     </v-container>
 </template>
 
@@ -63,7 +66,7 @@ export default {
     created() {
      /* eslint-disable no-console */
      const _this = this;
-      axios.get("https://api.github.com/search/repositories?q=stars:>100000").then(function(response) {
+      axios.get("https://api.github.com/search/repositories?q=stars:100000..300000").then(function(response) {
           //this.blogs = data.body.slice(0, 10);
          console.log(response.data)
          _this.gitHubRepoList = response.data.items;
@@ -73,6 +76,14 @@ export default {
         getFormattedDate(date){
           console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
           console.log(date);
+        },
+
+        getAllIssues(){
+          const _this = this;
+          axios.get("https://api.github.com/search/issues?q=author:raisedadeadrepo:freecodecamp/freecode").then(function(response) {
+         console.log(response.data)
+         _this.gitHubRepoList = response.data.items;
+          });
         }
     }
 };
