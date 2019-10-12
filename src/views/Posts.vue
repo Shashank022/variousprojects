@@ -94,18 +94,29 @@
             The Record is already exissited on the Account.......!!!
         </v-layout>
       </div> -->
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      <div>
+        <v-layout>
+          <v-flex xs12 md4 sm2>
+                Search for the Zip Code : <v-text-field label="Zip Code" v-model="startingZipCode"></v-text-field>
+          </v-flex>
+          <v-flex><strong> City, State, Country : </strong>{{this.startingCity}}</v-flex>
+        </v-layout>
+      </div>
   </v-Container>
 </template>
           
 <script>
-import pagination from "./Pagination.vue";
+//import pagination from "./Pagination.vue";
 import axios from "axios";
+import _ from 'lodash';
+
 export default {
   mounted() {
     this.getPosts();
   },
   components: {
-    pagination: pagination
+    //pagination: pagination
   },
   data() {
     return {
@@ -113,6 +124,8 @@ export default {
       posts: [],
       customerList:[],
       showDivnow:false,
+      startingZipCode:'',
+      startingCity:'',
       picker: new Date().toISOString().substr(0, 10),
       landscape: false,
       reactive: false,
@@ -139,6 +152,17 @@ export default {
   created(){
     //this.showDivnow = true;
   },
+
+  watch:{
+      startingZipCode:function(){
+      /* eslint-disable no-console */
+        //this.startingZipCode = '';
+        console.log(this.startingZipCode);
+        if(this.startingZipCode.length === 5){
+              this.lookZipCode();
+        }
+      }
+  },  
   methods: {
     getPosts() {
       /* eslint-disable no-console */
@@ -209,6 +233,8 @@ export default {
       }
    }
 },
+
+
     ClearAll(){
       this.showDivnow = false;
       this.dueby ="";
@@ -217,8 +243,24 @@ export default {
       this.status ="";
       this.subjects ="";
       this.title ="";
-    }
-     
+    },
+
+    "lookZipCode": _.debounce(function(){
+        //this.startingZipCode = "Searching....";
+        /* eslint-disable */ 
+        console.log(this.startingZipCode);
+        const _this = this;
+        axios.get('http://ziptasticapi.com/' + this.startingZipCode).then(function(response){
+              response.startingCity = response.data.city +', '+ response.data.state ;
+              _this.startingCity= response.data.city +', '+ response.data.state +', '+ response.data.country; 
+
+              console.log(response.data);
+              console.log(response.startingCity);
+        }).catch(function(error){
+            response.startingCity = "Invalid Zip Code";
+        });
+    },500)
+ 
   }
 };
 </script>
