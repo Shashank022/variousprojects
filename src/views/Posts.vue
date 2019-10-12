@@ -98,10 +98,12 @@
       <div>
         <v-layout>
           <v-flex xs12 md4 sm2>
-                Search for the Zip Code : <v-text-field label="Zip Code" v-model="startingZipCode"></v-text-field>
+                <strong>Search for the Zip Code : </strong><v-text-field label="Zip Code" v-model="startingZipCode"></v-text-field>
           </v-flex>
           <v-flex><strong> City, State, Country : </strong>{{this.startingCity}}</v-flex>
         </v-layout>
+                  <v-flex><v-btn round small color="green" class="black--text" @click="clear()">Clear</v-btn></v-flex>
+
       </div>
   </v-Container>
 </template>
@@ -244,6 +246,13 @@ export default {
       this.subjects ="";
       this.title ="";
     },
+
+
+    clear(){
+      this.startingZipCode = "";
+      this.startingCity = "";
+    },
+
 
     "lookZipCode": _.debounce(function(){
         //this.startingZipCode = "Searching....";
