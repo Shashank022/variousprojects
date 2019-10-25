@@ -131,6 +131,7 @@ export default {
       picker: new Date().toISOString().substr(0, 10),
       landscape: false,
       reactive: false,
+      active:'',
       postsData: {
         per_page: 10,
         page: 1
