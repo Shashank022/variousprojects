@@ -33,6 +33,9 @@
                       @click="saveApprovedApplication">
                       Approve
                     </v-btn> -->
+                    <v-btn  color="primary" round small text @click="copyMyURL()">
+                      Copy
+                    </v-btn>
                     <v-btn  color="primary" round small text @click="dialog = false">
                       Close
                     </v-btn>
@@ -578,7 +581,6 @@ export default {
       created() {
         /* eslint-disable no-console */
        const _this = this;
-       console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         axios.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
           
           if(isArray(response.data) && response.data.length > 0){
@@ -663,6 +665,11 @@ export default {
       document.getElementsByClassName('header-footer').checked = false;
       window.print();
     },
+    copyMyURL(){
+
+
+    },
+    
     generateUrl(){
 
     },
