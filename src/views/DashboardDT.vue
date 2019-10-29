@@ -21,6 +21,7 @@
                     class="headline grey lighten-2"
                     primary-title> Copy the URL
                   </v-card-title>
+                     <v-text-field v-model="text1" id="tocopy">{{fullUrl}}</v-text-field>
                   <v-card-text>
                       {{fullUrl}}
                   </v-card-text>
@@ -666,8 +667,14 @@ export default {
       window.print();
     },
     copyMyURL(){
+      
 
+    },
 
+    copyText(){
+    let input=document.getElementById("tocopy");
+   input.select();
+         document.execCommand("copy");
     },
     
     generateUrl(){
