@@ -21,8 +21,7 @@
                     class="headline grey lighten-2"
                     primary-title> Copy the URL
                   </v-card-title>
-                     <v-text-field v-model="text1" id="tocopy">{{fullUrl}}</v-text-field>
-                  <v-card-text>
+                  <v-card-text id="tocopy">
                       {{fullUrl}}
                   </v-card-text>
                   <v-divider></v-divider>
@@ -34,7 +33,7 @@
                       @click="saveApprovedApplication">
                       Approve
                     </v-btn> -->
-                    <v-btn  color="primary" round small text @click="copyMyURL()">
+                    <v-btn  color="primary" round small text @click="copyTexttoURL()" id="copytext">
                       Copy
                     </v-btn>
                     <v-btn  color="primary" round small text @click="dialog = false">
@@ -666,14 +665,16 @@ export default {
       document.getElementsByClassName('header-footer').checked = false;
       window.print();
     },
-    copyMyURL(){
-      
+    // copyMyURL(){
+    //   var copy = document.getElementById("copytext").value;
+    //   console.log(copy);
 
-    },
-
-    copyText(){
-    let input=document.getElementById("tocopy");
-   input.select();
+    // },
+  copyTexttoURL(){
+    var input=document.getElementById("tocopy");
+        console.log("0000000-------========+++++++++++");
+        console.log(input);
+        input.select();
          document.execCommand("copy");
     },
     
