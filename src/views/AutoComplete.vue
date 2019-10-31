@@ -112,7 +112,7 @@
           this.projectsList = response.data;
           var listProjects=[];
           listProjects = this.projectsList;
-          //console.log(this.projectsList);
+          console.log(listProjects);
           //console.log(listProjects);
             //const unique = listProjects.filter(function(elem, index, self) {
                   //   console.log("**************************************************************");
@@ -146,6 +146,7 @@
           this.arrowCounter = this.arrowCounter + 1;
           console.log("+++++++++++++++++@@@@@@@@@@@@@@@@@@@@@@@- Stage Arrow Down");
           console.log(this.arrowCounter);
+          console.log(evt);
         }
       },
       onArrowUp() {
