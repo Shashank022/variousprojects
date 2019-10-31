@@ -7,7 +7,6 @@ RUN apk add --no-cache nodejs npm
 # Install app dependencies
 COPY package.json ./package.json
 
-RUN npm-check-updates -u
 RUN npm install
 
 EXPOSE  8000
