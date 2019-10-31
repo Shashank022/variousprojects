@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   chainWebpack: config => {
     if (process.env.VUE_SERVE_DOCS) {
-      config.entry('app' ).set(path.resolve(__dirname, './docs/main.js')
+      config.entry('app' ).set(path.resolve(__dirname, './main.js'));
     }
   }
 }
