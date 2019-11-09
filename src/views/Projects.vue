@@ -118,6 +118,7 @@ export default {
           update(){
              /* eslint-disable no-console */
             console.log("Welcome to the Method Update.....");
+             console.log("Welcome to the Method Update.....");
           }
   }
 };
