@@ -9,6 +9,6 @@ COPY package.json ./package.json
 
 RUN npm install
 
-EXPOSE  8000
+EXPOSE  6000
 
 CMD ["npm","run","build"]
