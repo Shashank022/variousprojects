@@ -11,4 +11,4 @@ RUN npm install
 
 EXPOSE  6000
 
-CMD ["npm","run","serve"]
+CMD [ "http-server", "dist" ]
