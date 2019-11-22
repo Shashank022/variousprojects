@@ -9,8 +9,6 @@ COPY package.json ./package.json
 
 RUN npm install
 
-RUN npm run build
+EXPOSE  7000
 
-EXPOSE  6000
-
-CMD [ "http-server", "dist" ]
+CMD [ "npm", "run","serve" ]
