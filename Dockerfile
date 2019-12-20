@@ -8,6 +8,6 @@ RUN apk add --no-cache nodejs npm
 COPY package.json ./package.json
 RUN npm install
 
-EXPOSE  8000
+EXPOSE  5000
 
-CMD ["npm","run","serve"]
+CMD ["npm","run","build"]
