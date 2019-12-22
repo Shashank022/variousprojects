@@ -6,10 +6,10 @@ RUN apk add --no-cache nodejs npm
 
 # Install app dependencies
 COPY package.json ./package.json
+
+RUN npm i -g npm-check-updates
+RUN npm-check-updates -u
 RUN npm install
-
-RUN npm update 
-
 
 EXPOSE  5000
 
