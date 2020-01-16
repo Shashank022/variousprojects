@@ -63,6 +63,7 @@ export default {
       links: [
         { icon: "school", text: "Git Hub", route: "/github" },
         { icon: "dashboard", text: "Dashboard", route: "/" },
+        { icon: "folder", text: "Data API Call", route: "/dataapicall" },
         { icon: "folder", text: "Servers", route: "/projects" },
         { icon: "person", text: "Team", route: "/team" },
         { icon: "local_post_office", text: "Posts", route: "/posts" },

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Dashboard from "./views/Dashboard.vue";
+import DataApiCall from "./views/DataApiCall.vue";
 import Projects from "./views/Projects.vue";
 import Team from "./views/Team.vue";
 import Settings from "./views/Settings.vue";
@@ -26,6 +27,11 @@ export default new Router({
       path: "/",
       name: "dashboard",
       component: Dashboard
+    },
+    {
+      path: "/dataapicall",
+      name: "dataapicall",
+      component: DataApiCall
     },
     {
       path: "/projects",
