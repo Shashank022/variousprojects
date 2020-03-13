@@ -110,8 +110,8 @@
       /* eslint-disable no-console */
       this.$http.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
           this.projectsList = response.data;
-          var listProjects=[];
-          listProjects = this.projectsList;
+          //var listProjects=[];
+          //listProjects = this.projectsList;
           //console.log(this.projectsList);
           //console.log(listProjects);
             //const unique = listProjects.filter(function(elem, index, self) {
@@ -140,7 +140,7 @@
         this.search = result;
         this.isOpen = false;
       },
-      onArrowDown(evt) {
+      onArrowDown() {
               /* eslint-disable no-console */
         if (this.arrowCounter < this.results.length) {
           this.arrowCounter = this.arrowCounter + 1;
