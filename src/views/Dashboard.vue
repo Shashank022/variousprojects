@@ -24,11 +24,11 @@
             </v-flex>
             <v-flex xs4 md2 sm1>
               <div class="caption grey--text">Person</div>
-              <div>{{project.person}}</div>
+              <div>{{project.name}}</div>
             </v-flex>
             <v-flex xs4 md2 sm1>
               <div class="caption grey--text">Due Date</div>
-              <div>{{project.due}}</div>
+              <div>{{formatDate(project.due)}}</div>
             </v-flex>
             <v-flex xs4 md2 sm1>
               <div class="caption grey--text">Status</div>
@@ -87,7 +87,7 @@ export default {
    created() {
      //var myMap = new Map();
       /* eslint-disable no-console */
-      this.$http.get("https://myvueproject-d84e4.firebaseio.com/info.json").then(function(response) {
+      this.$http.get("http://localhost:3000/api/persons/").then(function(response) {
           this.projectsList = response.data;
           console.log("%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%"); 
           console.log(response.data); 
@@ -135,8 +135,15 @@ export default {
         console.log("Changed the Status from Overdue to Pending");
       } 
       /* eslint-disable no-console */
+    },
+
+    formatDate(date){
+      var date = new Date(date);
+      var newdate= (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+      return newdate;
+
     }
-  },
+  }
 
 };
 </script>
