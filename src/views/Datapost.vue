@@ -82,6 +82,32 @@ export default {
             school: "Vardhaman Engg College"
           }
         },
+        {
+          title: "Windows 10 Server",
+          person: "Kumar",
+          due: "Dec 20, 2019",
+          status: "Pending",
+          id: "403",
+          subjects: {
+            name: "mechanical",
+            rollNo: "4564654",
+            class: "III year",
+            school: "Vardhaman Engg College"
+          }
+        },
+        {
+          title: "Linux Server",
+          person: "Mathesh",
+          due: "Dec 29, 2019",
+          status: "Complete",
+          id: "402",
+          subjects: {
+            name: "mechanical",
+            rollNo: "4564654",
+            class: "III year",
+            school: "Vardhaman Engg College"
+          }
+        },
       ],
       postsData: 5, 
       page: 1,

@@ -547,7 +547,7 @@ export default {
         });
     },
 
-    update(id) {
+    update() {
       /* eslint-disable no-console */
       console.log(this.projects.id);
       console.log(this.projects);

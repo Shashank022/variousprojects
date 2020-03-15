@@ -194,9 +194,9 @@ export default {
         const selectedRow = this.selected;
          /* eslint-disable no-console */
         console.log(selectedRow[0]);
-        console.log(selectedRow[1]);
+        //console.log(selectedRow[1]);
         selectedRow.forEach(function(element){
-        console.log(element.name);
+            console.log(element.name);
         });
 
         for(var i=0; i< selectedRow.length; i++){

@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "axios": "^0.18.1",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dns": "^0.2.2",
+    "jsonwebtoken": "^8.5.1",
     "pagination": "^0.4.6",
     "sequelize-cli": "^5.5.0",
     "vue": "^2.6.10",
